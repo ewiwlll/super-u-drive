@@ -713,7 +713,7 @@
 <h1 id="module-3">🗺️ MODULE 3 : L’ADRESSAGE EN MAGASIN, LE SCAN &amp; LES FRUITS ET LÉGUMES</h1>
 <pre><code>┌───────────────────────┐     ┌───────────────────────┐     ┌───────────────────────┐     ┌────────────────────────┐
 │ Décodage Adresse      │ ──► │ Diode Verte Clignote  │ ──► │ Scan Laser Droit      │ ──► │ Pesée Groupée F&amp;L      │
-│ (ex: G16 03)          │     │ (Relance si éteinte)  │     │ + Comptage Voix Haute │     │ + Raisin TOUT EN HAUT  │
+│ (ex: G16 03)          │     │ (Relance si éteinte)  │     │ + Saisie Quantité Mob │     │ + Raisin TOUT EN HAUT  │
 └───────────────────────┘     └───────────────────────┘     └───────────────────────┘     └────────────────────────┘</code></pre>
 <h3 id="sec-3-1">3.1. Le Décodage des Adresses en Rayon &amp; Les Diodes Vertes (Pick-to-Light)</h3>
 <p>Sur l’écran du Mob, chaque référence présente une désignation, un visuel et une adresse d’implantation :</p>
@@ -769,7 +769,7 @@
 <ul>
 <li><strong>Lecteur laser :</strong> Déclenchement par le bouton situé sur la <strong>tranche latérale droite du Mob</strong>.</li>
 <li>⚠️ <strong>CONTRÔLE DES QUANTITÉS MULTIPLES (ex: 6 bouteilles de lait ou 4 packs d’eau) :</strong><br />
-Lorsque vous saisissez la quantité au clavier numérique (ex: touche <code>6</code>) au lieu de scanner chaque produit un par un : <strong>dénombrez impérativement à voix haute chaque article déposé dans le bac (1, 2, 3, 4, 5, 6)</strong>. Tout décalage physique engendre une réclamation client immédiate.</li>
+Lorsque vous saisissez directement la quantité au clavier numérique du Mob (ex: touche <code>6</code>) au lieu de scanner le code-barres 6 fois d’affilée : <strong>veillez simplement à bien vérifier le compte exact d’articles déposés dans votre bac</strong>. Tout décalage physique engendre une réclamation client immédiate.</li>
 </ul>
 <h3 id="sec-3-4">3.4. Le Protocole des Fruits &amp; Légumes (F&amp;L) &amp; La Protection des Produits Fragiles</h3>
 <ul>
@@ -875,10 +875,10 @@ Lorsque vous saisissez la quantité au clavier numérique (ex: touche <code>6</c
 <pre><code>┌─────────────────────────────────────────────────────────────┬─────────────────────────────────────────────────────────────┐
 │ 1. 🚪 ZONE ENTRÉE DU MAGASIN (À côté des Fruits &amp; Légumes)  │ 2. 🎯 TÊTES DE RAYONS (Allée Principale &amp; Secteur G)        │
 ├─────────────────────────────────────────────────────────────┼─────────────────────────────────────────────────────────────┤
-│ • 📦 Grand Espace Promo SEC (Beaucoup d&#39;articles, c&#39;est ici │ • 🌟 Têtes de Rayons Allée Centrale (Bouts d&#39;allées donnant │
-│   que la majorité des « Prix Promo » catalogue sont mis).   │   sur l&#39;allée principale du magasin).                       │
-│ • 🥛 Bacs Réfrigérés Frais (Promotions yaourts, crèmes et   │ • 🍾 Têtes de Rayons Liquides / Boissons (Secteur G :       │
-│   ultra-frais positionnés juste à côté des F&amp;L).            │   promos bières, sodas, jus, vins).                         │
+│ • 📦 Grand Podium Promo SEC : C&#39;est ici que la majorité des │ • 🌟 Têtes de Rayons Allée Centrale : Toutes les autres     │
+│   « Prix Promo » de l&#39;épicerie et du sec sont regroupés.    │   promotions sont en bout d&#39;allée (pas de bacs isolés).     │
+│ • 🥛 Bacs Réfrigérés FRAIS : Promotions crèmes et yaourts   │ • 🍾 Têtes de Rayons Boissons (Secteur G) : Promos bières, │
+│   positionnés juste à côté des Fruits &amp; Légumes.            │   sodas, jus et vins du catalogue.                          │
 └─────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────┘</code></pre>
 <h4 id="lentrée-du-magasin-à-côté-des-fruits-légumes">1. 🚪 L’Entrée du Magasin (À côté des Fruits &amp; Légumes) :</h4>
 <ul>
@@ -1112,7 +1112,7 @@ Ouvrez l’application U Livreur et déconnectez votre session pour libérer la 
 <ul class="task-list">
 <li><label><input type="checkbox" />1. Scan du QR code commande sur Mob.</label></li>
 <li><label><input type="checkbox" />2. Suivi du parcours logique : Entrée (Promos Sec &amp; Yaourts F&amp;L) ➔ G (Boissons &amp; Promos têtes de rayons) ➔ E (Lait / Croquettes / Lessive / PQ &amp; Sopalin / Hygiène) ➔ D (Épicerie &amp; Têtes de rayons) ➔ B (Frais/Surgelés) ➔ C (Brioches).</label></li>
-<li><label><input type="checkbox" />3. Dénombrement à voix haute des quantités multiples (1, 2, 3…).</label></li>
+<li><label><input type="checkbox" />3. Contrôle des quantités multiples (saisie de la quantité sur le Mob et vérification du compte dans le bac).</label></li>
 <li><label><input type="checkbox" />4. F&amp;L : Pesée groupée en un passage ➔ Raisin posé impérativement tout en haut.</label></li>
 <li><label><input type="checkbox" />5. Gestion des anomalies : Substitution si équivalent / Proposition sur le bac si doute / Zéro repasse si retard.</label></li>
 <li><label><input type="checkbox" />6. Clôture tournée : Scan code-barres sacs poignée chariot (0,26 €) ➔ Validation.</label></li>
