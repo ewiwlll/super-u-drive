@@ -79,7 +79,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 14px;
+    padding: 8px 15px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 700;
@@ -95,6 +95,7 @@ body {
 }
 .btn-primary:hover {
     background-color: var(--primary-hover);
+    transform: translateY(-1px);
 }
 
 .btn-edit {
@@ -122,6 +123,15 @@ body {
 }
 .btn-outline:hover {
     background-color: #F1F5F9;
+}
+
+.btn-save {
+    background-color: #ECFDF5;
+    color: #065F46;
+    border-color: #A7F3D0;
+}
+.btn-save:hover {
+    background-color: #D1FAE5;
 }
 
 /* EDIT STATUS BANNER */
@@ -153,7 +163,7 @@ body {
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
 }
 
-/* HERO HEADER WITH QR CODE */
+/* HERO HEADER WITH PUBLIC QR CODE */
 .hero-header {
     background: linear-gradient(135deg, #002F6C 0%, #001A3D 100%);
     color: white;
@@ -582,27 +592,11 @@ hr {
     background: #001A3D;
     transform: translateY(-2px);
 }
-
-@media print {
-    .top-toolbar, .back-to-top, .edit-status-banner {
-        display: none !important;
-    }
-    body {
-        padding: 0 !important;
-        background: white !important;
-    }
-    .container {
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-    }
-}
 </style>
 </head>
 <body>
 
-<!-- TOP ACTION TOOLBAR -->
+<!-- CLEAN ACTION TOOLBAR -->
 <div class="top-toolbar">
     <div class="toolbar-brand">
         <span>📘 Super U Louvigné</span>
@@ -610,18 +604,18 @@ hr {
         <span style="font-size: 13px; font-weight: 600; color: #64748B;">Manuel Opérationnel</span>
     </div>
     <div class="toolbar-actions">
-        <button id="toggleEditBtn" class="btn btn-edit" onclick="toggleEditMode()">✏️ Mode Modifiable</button>
-        <button class="btn btn-outline" onclick="saveEdits()">💾 Enregistrer</button>
-        <button class="btn btn-outline" onclick="exportEditedHtml()">📥 Télécharger HTML</button>
-        <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimer / PDF</button>
+        <button id="toggleEditBtn" class="btn btn-edit" onclick="toggleEditMode()">✏️ Modifier le texte</button>
+        <button class="btn btn-save" onclick="saveEdits()">💾 Enregistrer</button>
+        <button class="btn btn-outline" onclick="resetToOriginal()">🔄 Réinitialiser</button>
+        <a href="GUIDE_DU_NOUVEAU_DRIVE_SUPER_U.pdf" download="GUIDE_DU_NOUVEAU_DRIVE_SUPER_U.pdf" class="btn btn-primary">📥 Télécharger en PDF</a>
     </div>
 </div>
 
 <div class="container">
 
     <div id="editStatusBanner" class="edit-status-banner">
-        <span>✏️ <strong>Mode Édition Activé :</strong> Cliquez n'importe où sur le document pour modifier du texte ou ajouter des consignes.</span>
-        <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="resetToOriginal()">🔄 Réinitialiser le texte</button>
+        <span>✏️ <strong>Mode Modification Actif :</strong> Cliquez n'importe où sur le document pour modifier du texte ou ajouter des consignes.</span>
+        <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="resetToOriginal()">🔄 Remettre le texte original</button>
     </div>
 
     <!-- HERO HEADER WITH PUBLIC QR CODE -->
@@ -645,57 +639,80 @@ hr {
         </div>
     </div>
 
-    <!-- MAIN BODY CONTENT WITH PERFECT TOC -->
+    <!-- MAIN BODY CONTENT -->
     <div id="editableContent">
         <div class="toc-container" id="sommaire">
 
-## 🧭 TABLE DES MATIÈRES GÉNÉRALE
+<h2>🧭 TABLE DES MATIÈRES GÉNÉRALE</h2>
 
-- <a href="#module-1">📦 MODULE 1 : L'ARRIVÉE & L'OUVERTURE DU MATIN (6h00 – 8h00)</a>
-  - <a href="#sec-1-1">1.1. L'Arrivée, la Badgeuse & les Pauses</a>
-  - <a href="#sec-1-2">1.2. L'État d'Esprit & Les Relations en Magasin</a>
-  - <a href="#sec-1-3">1.3. L'Ouverture du Local Drive & Les Sessions PC</a>
-  - <a href="#sec-1-4">1.4. 🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les Commandes</a>
-  - <a href="#sec-1-5">1.5. Le Tri & la Distribution des Anticipations aux Métiers</a>
-- <a href="#module-2">🛒 MODULE 2 : LA PRÉPARATION MATÉRIELLE & L'ORGANISATION DU CHARIOT</a>
-  - <a href="#sec-2-1">2.1. L'Impression des Commandes & Le Mode MONO</a>
-  - <a href="#sec-2-2">2.2. Le Surlignage Méthodique & Le Tri Chronologique des Commandes</a>
-  - <a href="#sec-2-3">2.3. La Configuration Standard : 3 Socles Roulants</a>
-  - <a href="#sec-2-4">2.4. Le Système de la Tour de Bacs & L'Ergonomie de Préparation</a>
-  - <a href="#sec-2-5">2.5. Les 3 Plaquettes & Le Lancement sur le Mob</a>
-- <a href="#module-3">🗺️ MODULE 3 : L'ADRESSAGE EN MAGASIN, LE SCAN & LES FRUITS ET LÉGUMES</a>
-  - <a href="#sec-3-1">3.1. Le Décodage des Adresses en Rayon & Les Diodes Vertes (Pick-to-Light)</a>
-  - <a href="#sec-3-2">3.2. Le Plan d'Implantation des Rayons (G, E, D, B, C)</a>
-  - <a href="#sec-3-3">3.3. La Procédure de Scan & Le Contrôle des Quantités Multiples</a>
-  - <a href="#sec-3-4">3.4. Le Protocole des Fruits & Légumes (F&L)</a>
-- <a href="#module-4">🧠 MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS & CAS PARTICULIERS)</a>
-  - <a href="#sec-4-1">4.1. La Matrice de Décision : Rupture vs Substitution vs Proposition</a>
-  - <a href="#sec-4-2">4.2. Les 3 Fonctions du Mob & Le Fonctionnement de la Proposition</a>
-  - <a href="#sec-4-3">4.3. La Repasse & La Gestion des Délais</a>
-  - <a href="#sec-4-4">4.4. Les Anomalies Logiciel : Stock à 0, Adresses Imprécises & Bouton Crayon ✏️</a>
-  - <a href="#sec-4-5">4.5. L'Emplacement des Produits Promotionnels</a>
-- <a href="#module-5">🚗 MODULE 5 : LE RETOUR AU LOCAL, LA LIVRAISON & LES ENCAISSEMENTS</a>
-  - <a href="#sec-5-1">5.1. La Clôture de Collecte sur le Mob, Sacs (0,26 €) & Vigilance Système</a>
-  - <a href="#sec-5-2">5.2. L'Impression du Bon de Remise & Les Annotations Manuscrites</a>
-  - <a href="#sec-5-3">5.3. Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone Sèche)</a>
-  - <a href="#sec-5-3bis">5.3.bis. Le Téléphone Portable du Drive & La Réception des Appels Clients</a>
-  - <a href="#sec-5-4">5.4. L'Assemblage et la Remise Client à la Borne</a>
-  - <a href="#sec-5-5">5.5. L'Encaissement au Poste Caisse (Propositions, Annulations, Sacs, Bons U)</a>
-  - <a href="#sec-5-6">5.6. Les Modes de Paiement (CB, Espèces, Chèques, Comptes Pros & Aubépine)</a>
-  - <a href="#sec-5-7">5.7. Les Commandes Réglées en Ligne (E-commerce, Max Autorisé, Euros Carte U, Duplicata & Archivage)</a>
-  - <a href="#sec-5-8">5.8. La Distribution des Bouteilles de Gaz (Sécurité, Procédure d'Échange & Facturation)</a>
-- <a href="#module-6">🌙 MODULE 6 : LA FERMETURE DU SOIR & LA CLÔTURE DE CAISSE (19h20 – 19h45)</a>
-  - <a href="#sec-6-1">6.1. Les Horaires de Clôture & La Déconnexion Obligatoire de U Livreur</a>
-  - <a href="#sec-6-2">6.2. La Procédure de Clôture de Caisse : Prélèvement & Comptage des Rouleaux</a>
-  - <a href="#sec-6-3">6.3. La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)</a>
-  - <a href="#sec-6-4">6.4. La Sécurisation des Fonds, Pochettes & Dépôt au Coffre</a>
-  - <a href="#sec-6-4bis">6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée</a>
-  - <a href="#sec-6-5">6.5. Le Contrôle Sanitaire des Équipements Frigorifiques</a>
-  - <a href="#sec-6-6">6.6. La Préparation du Service du Lendemain & Clôture Finale</a>
-- <a href="#annexes">📋 ANNEXES & FICHES RÉFLEXES OPÉRATIONNELLES</a>
-  - <a href="#annexe-1">Annexe 1 : La Grille de Contrôle Chronologique</a>
-  - <a href="#annexe-2">Annexe 2 : Le Référentiel des 6 Statuts Couleur sur PC</a>
-  - <a href="#annexe-3">Annexe 3 : Annuaire des Postes Internes & Contacts Clés</a>
+<ul>
+<li><a href="#module-1">📦 MODULE 1 : L'ARRIVÉE & L'OUVERTURE DU MATIN (6h00 – 8h00)</a>
+  <ul>
+  <li><a href="#sec-1-1">1.1. L'Arrivée, la Badgeuse & les Pauses</a></li>
+  <li><a href="#sec-1-2">1.2. L'État d'Esprit & Les Relations en Magasin</a></li>
+  <li><a href="#sec-1-3">1.3. L'Ouverture du Local Drive & Les Sessions PC</a></li>
+  <li><a href="#sec-1-4">1.4. 🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les Commandes</a></li>
+  <li><a href="#sec-1-5">1.5. Le Tri & la Distribution des Anticipations aux Métiers</a></li>
+  </ul>
+</li>
+<li><a href="#module-2">🛒 MODULE 2 : LA PRÉPARATION MATÉRIELLE & L'ORGANISATION DU CHARIOT</a>
+  <ul>
+  <li><a href="#sec-2-1">2.1. L'Impression des Commandes & Le Mode MONO</a></li>
+  <li><a href="#sec-2-2">2.2. Le Surlignage Méthodique & Le Tri Chronologique des Commandes</a></li>
+  <li><a href="#sec-2-3">2.3. La Configuration Standard : 3 Socles Roulants</a></li>
+  <li><a href="#sec-2-4">2.4. Le Système de la Tour de Bacs & L'Ergonomie de Préparation</a></li>
+  <li><a href="#sec-2-5">2.5. Les 3 Plaquettes & Le Lancement sur le Mob</a></li>
+  </ul>
+</li>
+<li><a href="#module-3">🗺️ MODULE 3 : L'ADRESSAGE EN MAGASIN, LE SCAN & LES FRUITS ET LÉGUMES</a>
+  <ul>
+  <li><a href="#sec-3-1">3.1. Le Décodage des Adresses en Rayon & Les Diodes Vertes (Pick-to-Light)</a></li>
+  <li><a href="#sec-3-2">3.2. Le Plan d'Implantation des Rayons (G, E, D, B, C)</a></li>
+  <li><a href="#sec-3-3">3.3. La Procédure de Scan & Le Contrôle des Quantités Multiples</a></li>
+  <li><a href="#sec-3-4">3.4. Le Protocole des Fruits & Légumes (F&L)</a></li>
+  </ul>
+</li>
+<li><a href="#module-4">🧠 MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS & CAS PARTICULIERS)</a>
+  <ul>
+  <li><a href="#sec-4-1">4.1. La Matrice de Décision : Rupture vs Substitution vs Proposition</a></li>
+  <li><a href="#sec-4-2">4.2. Les 3 Fonctions du Mob & Le Fonctionnement de la Proposition</a></li>
+  <li><a href="#sec-4-3">4.3. La Repasse & La Gestion des Délais</a></li>
+  <li><a href="#sec-4-4">4.4. Les Anomalies Logiciel : Stock à 0, Adresses Imprécises & Bouton Crayon ✏️</a></li>
+  <li><a href="#sec-4-5">4.5. L'Emplacement des Produits Promotionnels</a></li>
+  </ul>
+</li>
+<li><a href="#module-5">🚗 MODULE 5 : LE RETOUR AU LOCAL, LA LIVRAISON & LES ENCAISSEMENTS</a>
+  <ul>
+  <li><a href="#sec-5-1">5.1. La Clôture de Collecte sur le Mob, Sacs (0,26 €) & Vigilance Système</a></li>
+  <li><a href="#sec-5-2">5.2. L'Impression du Bon de Remise & Les Annotations Manuscrites</a></li>
+  <li><a href="#sec-5-3">5.3. Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone Sèche)</a></li>
+  <li><a href="#sec-5-3bis">5.3.bis. Le Téléphone Portable du Drive & La Réception des Appels Clients</a></li>
+  <li><a href="#sec-5-4">5.4. L'Assemblage et la Remise Client à la Borne</a></li>
+  <li><a href="#sec-5-5">5.5. L'Encaissement au Poste Caisse (Propositions, Annulations, Sacs, Bons U)</a></li>
+  <li><a href="#sec-5-6">5.6. Les Modes de Paiement (CB, Espèces, Chèques, Comptes Pros & Aubépine)</a></li>
+  <li><a href="#sec-5-7">5.7. Les Commandes Réglées en Ligne (E-commerce, Max Autorisé, Euros Carte U, Duplicata & Archivage)</a></li>
+  <li><a href="#sec-5-8">5.8. La Distribution des Bouteilles de Gaz (Sécurité, Procédure d'Échange & Facturation)</a></li>
+  </ul>
+</li>
+<li><a href="#module-6">🌙 MODULE 6 : LA FERMETURE DU SOIR & LA CLÔTURE DE CAISSE (19h20 – 19h45)</a>
+  <ul>
+  <li><a href="#sec-6-1">6.1. Les Horaires de Clôture & La Déconnexion Obligatoire de U Livreur</a></li>
+  <li><a href="#sec-6-2">6.2. La Procédure de Clôture de Caisse : Prélèvement & Comptage des Rouleaux</a></li>
+  <li><a href="#sec-6-3">6.3. La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)</a></li>
+  <li><a href="#sec-6-4">6.4. La Sécurisation des Fonds, Pochettes & Dépôt au Coffre</a></li>
+  <li><a href="#sec-6-4bis">6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée</a></li>
+  <li><a href="#sec-6-5">6.5. Le Contrôle Sanitaire des Équipements Frigorifiques</a></li>
+  <li><a href="#sec-6-6">6.6. La Préparation du Service du Lendemain & Clôture Finale</a></li>
+  </ul>
+</li>
+<li><a href="#annexes">📋 ANNEXES & FICHES RÉFLEXES OPÉRATIONNELLES</a>
+  <ul>
+  <li><a href="#annexe-1">Annexe 1 : La Grille de Contrôle Chronologique</a></li>
+  <li><a href="#annexe-2">Annexe 2 : Le Référentiel des 6 Statuts Couleur sur PC</a></li>
+  <li><a href="#annexe-3">Annexe 3 : Annuaire des Postes Internes & Contacts Clés</a></li>
+  </ul>
+</li>
+</ul>
 
 </div>
 
@@ -1712,14 +1729,20 @@ contrats, plannings.</td>
 
 <script>
 let isEditMode = false;
-const STORAGE_KEY = 'super_u_guide_content_public_v2';
+const STORAGE_KEY = 'super_u_guide_content_public_v3';
 
+// Auto-load saved content if existing
 window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
         document.getElementById('editableContent').innerHTML = saved;
-        showToast('🔄 Vos modifications personnalisées ont été chargées !');
+        showToast('🔄 Vos modifications enregistrées ont été chargées !');
     }
+});
+
+// Auto-save when user types
+document.getElementById('editableContent').addEventListener('input', () => {
+    localStorage.setItem(STORAGE_KEY, document.getElementById('editableContent').innerHTML);
 });
 
 function toggleEditMode() {
@@ -1732,12 +1755,12 @@ function toggleEditMode() {
 
     if (isEditMode) {
         btn.classList.add('active');
-        btn.innerHTML = '🔒 Quitter Mode Édition';
+        btn.innerHTML = '🔒 Verrouiller le texte';
         banner.classList.add('visible');
-        showToast('✏️ Mode édition activé. Cliquez sur n\'importe quel texte pour modifier !');
+        showToast('✏️ Modification activée. Cliquez sur n\'importe quel texte pour changer une phrase !');
     } else {
         btn.classList.remove('active');
-        btn.innerHTML = '✏️ Mode Modifiable';
+        btn.innerHTML = '✏️ Modifier le texte';
         banner.classList.remove('visible');
         saveEdits();
     }
@@ -1746,26 +1769,11 @@ function toggleEditMode() {
 function saveEdits() {
     const content = document.getElementById('editableContent').innerHTML;
     localStorage.setItem(STORAGE_KEY, content);
-    showToast('💾 Modifications enregistrées dans votre navigateur !');
-}
-
-function exportEditedHtml() {
-    saveEdits();
-    const docHtml = document.documentElement.outerHTML;
-    const blob = new Blob([docHtml], { type: 'text/html;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'GUIDE_DU_NOUVEAU_DRIVE_SUPER_U_MODIFIE.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    showToast('📥 Fichier HTML téléchargé sur votre ordinateur !');
+    showToast('💾 Sauvegarde réussie ! Vos modifications sont conservées pour votre prochaine visite.');
 }
 
 function resetToOriginal() {
-    if (confirm('Voulez-vous vraiment réinitialiser le document au texte original ?')) {
+    if (confirm('Voulez-vous vraiment réinitialiser tout le document au texte officiel de base ?')) {
         localStorage.removeItem(STORAGE_KEY);
         location.reload();
     }
@@ -1777,7 +1785,7 @@ function showToast(msg) {
     toast.classList.add('show');
     setTimeout(() => {
         toast.classList.remove('show');
-    }, 2800);
+    }, 3200);
 }
 </script>
 
