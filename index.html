@@ -28,6 +28,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: var(--text-main);
@@ -274,6 +278,7 @@ body {
     text-decoration: none;
     font-size: 15px;
     display: inline-block;
+    padding: 2px 0;
 }
 
 .toc-container > ul > li > a:hover {
@@ -296,11 +301,19 @@ body {
 .toc-container ul ul a {
     color: #475569;
     text-decoration: none;
+    padding: 2px 0;
+    display: inline-block;
 }
 
 .toc-container ul ul a:hover {
     color: var(--primary);
     text-decoration: underline;
+    font-weight: 600;
+}
+
+/* SCROLL MARGIN FOR HEADINGS */
+h1, h2, h3, h4 {
+    scroll-margin-top: 85px;
 }
 
 /* HEADINGS */
@@ -570,13 +583,6 @@ hr {
     transform: translateY(-2px);
 }
 
-/* PRINT & PDF STYLING */
-@page {
-    size: A4 portrait;
-    margin: 14mm 12mm 14mm 12mm;
-    
-}
-
 @media print {
     .top-toolbar, .back-to-top, .edit-status-banner {
         display: none !important;
@@ -584,28 +590,12 @@ hr {
     body {
         padding: 0 !important;
         background: white !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
     }
     .container {
         border: none !important;
         box-shadow: none !important;
         padding: 0 !important;
         max-width: 100% !important;
-    }
-    h1 {
-        page-break-before: always;
-        break-before: page;
-        page-break-after: avoid;
-        break-after: avoid;
-    }
-    h2, h3, h4 {
-        page-break-after: avoid;
-        break-after: avoid;
-    }
-    table, .callout, pre, .hero-header, .toc-container {
-        page-break-inside: avoid;
-        break-inside: avoid;
     }
 }
 </style>
@@ -655,172 +645,68 @@ hr {
         </div>
     </div>
 
-    <!-- MAIN BODY CONTENT (EDITABLE) -->
+    <!-- MAIN BODY CONTENT WITH PERFECT TOC -->
     <div id="editableContent">
-        <div id="sommaire" class="toc-container">
-<h2 id="table-des-matières-générale">🧭 TABLE DES MATIÈRES GÉNÉRALE</h2>
-<ul>
-<li><a href="#-module-1--larrivée--louverture-du-matin-6h00--8h00">📦
-MODULE 1 : L’ARRIVÉE &amp; L’OUVERTURE DU MATIN (6h00 – 8h00)</a>
-<ul>
-<li><a href="#11-larrivée-la-badgeuse--les-pauses">1.1. L’Arrivée, la
-Badgeuse &amp; les Pauses</a></li>
-<li><a href="#12-létat-desprit--les-relations-en-magasin">1.2. L’État
-d’Esprit &amp; Les Relations en Magasin</a></li>
-<li><a href="#13-louverture-du-local-drive--les-sessions-pc">1.3.
-L’Ouverture du Local Drive &amp; Les Sessions PC</a></li>
-<li><a
-href="#14--règle-de-gestion-absolue--lancer-les-anticipations-avant-les-commandes">1.4.
-🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les
-Commandes</a></li>
-<li><a
-href="#15-le-tri--la-distribution-des-anticipations-aux-métiers">1.5. Le
-Tri &amp; la Distribution des Anticipations aux Métiers</a></li>
-</ul></li>
-<li><a
-href="#-module-2--la-préparation-matérielle--lorganisation-du-chariot">🛒
-MODULE 2 : LA PRÉPARATION MATÉRIELLE &amp; L’ORGANISATION DU CHARIOT</a>
-<ul>
-<li><a href="#21-limpression-des-commandes--le-mode-mono">2.1.
-L’Impression des Commandes &amp; Le Mode MONO</a></li>
-<li><a
-href="#22-le-surlignage-méthodique--le-tri-chronologique-des-commandes">2.2.
-Le Surlignage Méthodique &amp; Le Tri Chronologique des
-Commandes</a></li>
-<li><a href="#23-la-configuration-standard--3-socles-roulants">2.3. La
-Configuration Standard : 3 Socles Roulants</a></li>
-<li><a
-href="#24-le-système-de-la-tour-de-bacs--lergonomie-de-préparation">2.4.
-Le Système de la Tour de Bacs &amp; L’Ergonomie de Préparation</a></li>
-<li><a href="#25-les-3-plaquettes--le-lancement-sur-le-mob">2.5. Les 3
-Plaquettes &amp; Le Lancement sur le Mob</a></li>
-</ul></li>
-<li><a
-href="#-module-3--ladressage-en-magasin-le-scan--les-fruits-et-légumes">🗺️
-MODULE 3 : L’ADRESSAGE EN MAGASIN, LE SCAN &amp; LES FRUITS ET
-LÉGUMES</a>
-<ul>
-<li><a
-href="#31-le-décodage-des-adresses-en-rayon--les-diodes-vertes-pick-to-light">3.1.
-Le Décodage des Adresses en Rayon &amp; Les Diodes Vertes
-(Pick-to-Light)</a></li>
-<li><a href="#32-le-plan-dimplantation-des-rayons-g-e-d-b-c">3.2. Le
-Plan d’Implantation des Rayons (G, E, D, B, C)</a></li>
-<li><a
-href="#33-la-procédure-de-scan--le-contrôle-des-quantités-multiples">3.3.
-La Procédure de Scan &amp; Le Contrôle des Quantités Multiples</a></li>
-<li><a href="#34-le-protocole-des-fruits--légumes-fl">3.4. Le Protocole
-des Fruits &amp; Légumes (F&amp;L)</a></li>
-</ul></li>
-<li><a
-href="#-module-4--la-gestion-des-imprévus-produits-manquants--cas-particuliers">🧠
-MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS &amp; CAS
-PARTICULIERS)</a>
-<ul>
-<li><a
-href="#41-la-matrice-de-décision--rupture-vs-substitution-vs-proposition">4.1.
-La Matrice de Décision : Rupture vs Substitution vs Proposition</a></li>
-<li><a
-href="#42-les-3-fonctions-du-mob--le-fonctionnement-de-la-proposition">4.2.
-Les 3 Fonctions du Mob &amp; Le Fonctionnement de la
-Proposition</a></li>
-<li><a href="#43-la-repasse--la-gestion-des-délais">4.3. La Repasse
-&amp; La Gestion des Délais</a></li>
-<li><a
-href="#44-les-anomalies-logiciel--stock-à-0-adresses-imprécises--bouton-crayon-️">4.4.
-Les Anomalies Logiciel : Stock à 0, Adresses Imprécises &amp; Bouton
-Crayon ✏️</a></li>
-<li><a href="#45-lemplacement-des-produits-promotionnels">4.5.
-L’Emplacement des Produits Promotionnels</a></li>
-</ul></li>
-<li><a
-href="#-module-5--le-retour-au-local-la-livraison--les-encaissements">🚗
-MODULE 5 : LE RETOUR AU LOCAL, LA LIVRAISON &amp; LES ENCAISSEMENTS</a>
-<ul>
-<li><a
-href="#51-la-clôture-de-collecte-sur-le-mob-sacs-026--vigilance-système">5.1.
-La Clôture de Collecte sur le Mob, Sacs (0,26 €) &amp; Vigilance
-Système</a></li>
-<li><a
-href="#52-limpression-du-bon-de-remise--les-annotations-manuscrites">5.2.
-L’Impression du Bon de Remise &amp; Les Annotations Manuscrites</a></li>
-<li><a
-href="#53-le-stockage-au-local-drive-chambre-froide-congélateurs-zone-sèche">5.3.
-Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone
-Sèche)</a></li>
-<li><a
-href="#-53bis-le-téléphone-portable-du-drive--la-réception-des-appels-clients">5.3.bis.
-Le Téléphone Portable du Drive &amp; La Réception des Appels
-Clients</a></li>
-<li><a href="#54-lassemblage-et-la-remise-client-à-la-borne">5.4.
-L’Assemblage et la Remise Client à la Borne</a></li>
-<li><a
-href="#55-lencaissement-au-poste-caisse-propositions-annulations-sacs-bons-u">5.5.
-L’Encaissement au Poste Caisse (Propositions, Annulations, Sacs, Bons
-U)</a></li>
-<li><a
-href="#56-les-modes-de-paiement-cb-espèces-chèques-comptes-professionnels--aubépine">5.6.
-Les Modes de Paiement (CB, Espèces, Chèques, Comptes Professionnels
-&amp; Aubépine)</a></li>
-<li><a
-href="#57-les-commandes-réglées-en-ligne-e-commerce-max-autorisé-euros-carte-u-duplicata--archivage">5.7.
-Les Commandes Réglées en Ligne (E-commerce, Max Autorisé, Euros Carte U,
-Duplicata &amp; Archivage)</a></li>
-<li><a
-href="#58-la-distribution-des-bouteilles-de-gaz-sécurité-procédure-déchange--facturation">5.8.
-La Distribution des Bouteilles de Gaz (Sécurité, Procédure d’Échange
-&amp; Facturation)</a></li>
-</ul></li>
-<li><a
-href="#-module-6--la-fermeture-du-soir--la-clôture-de-caisse-19h20--19h45">🌙
-MODULE 6 : LA FERMETURE DU SOIR &amp; LA CLÔTURE DE CAISSE (19h20 –
-19h45)</a>
-<ul>
-<li><a
-href="#61-les-horaires-de-clôture--la-déconnexion-obligatoire-de-u-livreur">6.1.
-Les Horaires de Clôture &amp; La Déconnexion Obligatoire de U
-Livreur</a></li>
-<li><a
-href="#62-la-procédure-de-clôture-de-caisse--prélèvement--comptage-des-rouleaux">6.2.
-La Procédure de Clôture de Caisse : Prélèvement &amp; Comptage des
-Rouleaux</a></li>
-<li><a
-href="#63-la-gestion-des-écarts-de-caisse-assistance-accueil---poste-1">6.3.
-La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)</a></li>
-<li><a
-href="#64-la-sécurisation-des-fonds-pochettes--dépôt-au-coffre">6.4. La
-Sécurisation des Fonds, Pochettes &amp; Dépôt au Coffre</a></li>
-<li><a
-href="#-64bis-la-gestion-des-commandes-non-retirées-en-fin-de-journée">6.4.bis.
-La Gestion des Commandes Non Retirées en Fin de Journée</a></li>
-<li><a
-href="#65-le-contrôle-sanitaire-des-équipements-frigorifiques">6.5. Le
-Contrôle Sanitaire des Équipements Frigorifiques</a></li>
-<li><a
-href="#66-la-préparation-du-service-du-lendemain--clôture-finale">6.6.
-La Préparation du Service du Lendemain &amp; Clôture Finale</a></li>
-</ul></li>
-<li><a href="#-annexes--fiches-réflexes-opérationnelles">📋 ANNEXES
-&amp; FICHES RÉFLEXES OPÉRATIONNELLES</a>
-<ul>
-<li><a href="#annexe-1--la-grille-de-contrôle-chronologique">Annexe 1 :
-La Grille de Contrôle Chronologique</a></li>
-<li><a
-href="#annexe-2--le-référentiel-des-6-statuts-couleur-sur-pc">Annexe 2 :
-Le Référentiel des 6 Statuts Couleur sur PC</a></li>
-<li><a
-href="#annexe-3--annuaire-des-postes-internes--contacts-clés">Annexe 3 :
-Annuaire des Postes Internes &amp; Contacts Clés</a></li>
-</ul></li>
-</ul>
+        <div class="toc-container" id="sommaire">
+
+## 🧭 TABLE DES MATIÈRES GÉNÉRALE
+
+- <a href="#module-1">📦 MODULE 1 : L'ARRIVÉE & L'OUVERTURE DU MATIN (6h00 – 8h00)</a>
+  - <a href="#sec-1-1">1.1. L'Arrivée, la Badgeuse & les Pauses</a>
+  - <a href="#sec-1-2">1.2. L'État d'Esprit & Les Relations en Magasin</a>
+  - <a href="#sec-1-3">1.3. L'Ouverture du Local Drive & Les Sessions PC</a>
+  - <a href="#sec-1-4">1.4. 🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les Commandes</a>
+  - <a href="#sec-1-5">1.5. Le Tri & la Distribution des Anticipations aux Métiers</a>
+- <a href="#module-2">🛒 MODULE 2 : LA PRÉPARATION MATÉRIELLE & L'ORGANISATION DU CHARIOT</a>
+  - <a href="#sec-2-1">2.1. L'Impression des Commandes & Le Mode MONO</a>
+  - <a href="#sec-2-2">2.2. Le Surlignage Méthodique & Le Tri Chronologique des Commandes</a>
+  - <a href="#sec-2-3">2.3. La Configuration Standard : 3 Socles Roulants</a>
+  - <a href="#sec-2-4">2.4. Le Système de la Tour de Bacs & L'Ergonomie de Préparation</a>
+  - <a href="#sec-2-5">2.5. Les 3 Plaquettes & Le Lancement sur le Mob</a>
+- <a href="#module-3">🗺️ MODULE 3 : L'ADRESSAGE EN MAGASIN, LE SCAN & LES FRUITS ET LÉGUMES</a>
+  - <a href="#sec-3-1">3.1. Le Décodage des Adresses en Rayon & Les Diodes Vertes (Pick-to-Light)</a>
+  - <a href="#sec-3-2">3.2. Le Plan d'Implantation des Rayons (G, E, D, B, C)</a>
+  - <a href="#sec-3-3">3.3. La Procédure de Scan & Le Contrôle des Quantités Multiples</a>
+  - <a href="#sec-3-4">3.4. Le Protocole des Fruits & Légumes (F&L)</a>
+- <a href="#module-4">🧠 MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS & CAS PARTICULIERS)</a>
+  - <a href="#sec-4-1">4.1. La Matrice de Décision : Rupture vs Substitution vs Proposition</a>
+  - <a href="#sec-4-2">4.2. Les 3 Fonctions du Mob & Le Fonctionnement de la Proposition</a>
+  - <a href="#sec-4-3">4.3. La Repasse & La Gestion des Délais</a>
+  - <a href="#sec-4-4">4.4. Les Anomalies Logiciel : Stock à 0, Adresses Imprécises & Bouton Crayon ✏️</a>
+  - <a href="#sec-4-5">4.5. L'Emplacement des Produits Promotionnels</a>
+- <a href="#module-5">🚗 MODULE 5 : LE RETOUR AU LOCAL, LA LIVRAISON & LES ENCAISSEMENTS</a>
+  - <a href="#sec-5-1">5.1. La Clôture de Collecte sur le Mob, Sacs (0,26 €) & Vigilance Système</a>
+  - <a href="#sec-5-2">5.2. L'Impression du Bon de Remise & Les Annotations Manuscrites</a>
+  - <a href="#sec-5-3">5.3. Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone Sèche)</a>
+  - <a href="#sec-5-3bis">5.3.bis. Le Téléphone Portable du Drive & La Réception des Appels Clients</a>
+  - <a href="#sec-5-4">5.4. L'Assemblage et la Remise Client à la Borne</a>
+  - <a href="#sec-5-5">5.5. L'Encaissement au Poste Caisse (Propositions, Annulations, Sacs, Bons U)</a>
+  - <a href="#sec-5-6">5.6. Les Modes de Paiement (CB, Espèces, Chèques, Comptes Pros & Aubépine)</a>
+  - <a href="#sec-5-7">5.7. Les Commandes Réglées en Ligne (E-commerce, Max Autorisé, Euros Carte U, Duplicata & Archivage)</a>
+  - <a href="#sec-5-8">5.8. La Distribution des Bouteilles de Gaz (Sécurité, Procédure d'Échange & Facturation)</a>
+- <a href="#module-6">🌙 MODULE 6 : LA FERMETURE DU SOIR & LA CLÔTURE DE CAISSE (19h20 – 19h45)</a>
+  - <a href="#sec-6-1">6.1. Les Horaires de Clôture & La Déconnexion Obligatoire de U Livreur</a>
+  - <a href="#sec-6-2">6.2. La Procédure de Clôture de Caisse : Prélèvement & Comptage des Rouleaux</a>
+  - <a href="#sec-6-3">6.3. La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)</a>
+  - <a href="#sec-6-4">6.4. La Sécurisation des Fonds, Pochettes & Dépôt au Coffre</a>
+  - <a href="#sec-6-4bis">6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée</a>
+  - <a href="#sec-6-5">6.5. Le Contrôle Sanitaire des Équipements Frigorifiques</a>
+  - <a href="#sec-6-6">6.6. La Préparation du Service du Lendemain & Clôture Finale</a>
+- <a href="#annexes">📋 ANNEXES & FICHES RÉFLEXES OPÉRATIONNELLES</a>
+  - <a href="#annexe-1">Annexe 1 : La Grille de Contrôle Chronologique</a>
+  - <a href="#annexe-2">Annexe 2 : Le Référentiel des 6 Statuts Couleur sur PC</a>
+  - <a href="#annexe-3">Annexe 3 : Annuaire des Postes Internes & Contacts Clés</a>
+
 </div>
-<hr />
-<h1 id="module-1-larrivée-louverture-du-matin-6h00-8h00">📦 MODULE 1 :
-L’ARRIVÉE &amp; L’OUVERTURE DU MATIN (6h00 – 8h00)</h1>
+
+        <h1 id="module-1">
+📦 MODULE 1 : L'ARRIVÉE &amp; L'OUVERTURE DU MATIN (6h00 – 8h00)
+</h1>
 <div class="workflow-bar"><span class="workflow-step">Arrivée / Badgeuse</span><span class="workflow-arrow">➔</span><span class="workflow-step">Ouverture Rideau &amp; Barrière</span><span class="workflow-arrow">➔</span><span class="workflow-step">Connexion PC &amp; Mob (2 Apps)</span><span class="workflow-arrow">➔</span><span class="workflow-step">LANCEMENT DES ANTICIPATIONS</span><span class="workflow-arrow">➔</span><span class="workflow-step">Distribution Métiers</span></div>
 <hr />
-<h3 id="larrivée-la-badgeuse-les-pauses">1.1. L’Arrivée, la Badgeuse
-&amp; les Pauses</h3>
+<h3 id="sec-1-1">
+1.1. L'Arrivée, la Badgeuse &amp; les Pauses
+</h3>
 <ul>
 <li><strong>Horaires de prise de poste :</strong> Début de service à
 6h00 ou 7h30 selon le planning hebdomadaire.</li>
@@ -847,8 +733,9 @@ flux matinal (vers 8h30).</li>
 </ul></li>
 </ul>
 <hr />
-<h3 id="létat-desprit-les-relations-en-magasin">1.2. L’État d’Esprit
-&amp; Les Relations en Magasin</h3>
+<h3 id="sec-1-2">
+1.2. L'État d'Esprit &amp; Les Relations en Magasin
+</h3>
 <ol type="1">
 <li><strong>Priorité Client en Magasin :</strong><br />
 Dès 8h30, la clientèle est présente dans les allées. En circulation avec
@@ -862,8 +749,9 @@ bonne entente facilite l’assistance pour la recherche de références
 complémentaires en réserve.</li>
 </ol>
 <hr />
-<h3 id="louverture-du-local-drive-les-sessions-pc">1.3. L’Ouverture du
-Local Drive &amp; Les Sessions PC</h3>
+<h3 id="sec-1-3">
+1.3. L'Ouverture du Local Drive &amp; Les Sessions PC
+</h3>
 <ol type="1">
 <li><strong>Accès au local Drive :</strong>
 <ul>
@@ -898,10 +786,10 @@ Mob.</em></li>
 </ul></li>
 </ol>
 <hr />
-<h3
-id="règle-de-gestion-absolue-lancer-les-anticipations-avant-les-commandes">1.4.
-🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les
-Commandes</h3>
+<h3 id="sec-1-4">
+1.4. 🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les
+Commandes
+</h3>
 <div class="callout callout-danger"><div class="callout-icon">🚨</div><div class="callout-content"><p>⛔ <strong>RÈGLE CRITIQUE D’ORDONNANCEMENT :</strong><br />
 L’impression des commandes ne doit <strong>JAMAIS</strong> être lancée
 avant la génération des Anticipations. Dans le cas contraire,
@@ -925,8 +813,9 @@ désarêtés, poissons vidés, crevettes et crustacés au poids. - 🥓
 traiteur au grammage. - 🥖 <strong>Boulangerie</strong> : Pains
 spécifiques nécessitant un tranchage ou une cuisson dédiée.</p>
 <hr />
-<h3 id="le-tri-la-distribution-des-anticipations-aux-métiers">1.5. Le
-Tri &amp; la Distribution des Anticipations aux Métiers</h3>
+<h3 id="sec-1-5">
+1.5. Le Tri &amp; la Distribution des Anticipations aux Métiers
+</h3>
 <p>Dès l’édition des documents :</p>
 <ol type="1">
 <li><strong>Identification des barquettes en libre-service (“Prix
@@ -948,13 +837,14 @@ Poissonnerie, Boulangerie).</li>
 </ul></li>
 </ol>
 <hr />
-<h1 id="module-2-la-préparation-matérielle-lorganisation-du-chariot">🛒
-MODULE 2 : LA PRÉPARATION MATÉRIELLE &amp; L’ORGANISATION DU
-CHARIOT</h1>
+<h1 id="module-2">
+🛒 MODULE 2 : LA PRÉPARATION MATÉRIELLE &amp; L'ORGANISATION DU CHARIOT
+</h1>
 <div class="workflow-bar"><span class="workflow-step">Impression MONO</span><span class="workflow-arrow">➔</span><span class="workflow-step">Surlignage Méthodique &amp; Tri Chronologique</span><span class="workflow-arrow">➔</span><span class="workflow-step">Chariot 3 Socles + Tour de Bacs</span><span class="workflow-arrow">➔</span><span class="workflow-step">3 Plaquettes Prêtes</span></div>
 <hr />
-<h3 id="limpression-des-commandes-le-mode-mono">2.1. L’Impression des
-Commandes &amp; Le Mode MONO</h3>
+<h3 id="sec-2-1">
+2.1. L'Impression des Commandes &amp; Le Mode MONO
+</h3>
 <p>Une fois les anticipations distribuées, lancez l’impression des
 commandes du jour :</p>
 <ol type="1">
@@ -971,9 +861,9 @@ d’entraînement papier, ouvrez la face avant de l’imprimante,
 repositionnez la ramette et refermez le capot.</li>
 </ol>
 <hr />
-<h3
-id="le-surlignage-méthodique-le-tri-chronologique-des-commandes">2.2. Le
-Surlignage Méthodique &amp; Le Tri Chronologique des Commandes</h3>
+<h3 id="sec-2-2">
+2.2. Le Surlignage Méthodique &amp; Le Tri Chronologique des Commandes
+</h3>
 <p>À la sortie de l’imprimante, munissez-vous d’un surligneur.</p>
 <h4 id="les-3-mentions-à-mettre-en-évidence-immédiatement">Les 3
 mentions à mettre en évidence immédiatement :</h4>
@@ -999,8 +889,9 @@ cachée sur le plan de travail en empilant les suivantes.</li>
 à 19h00.</strong></li>
 </ul>
 <hr />
-<h3 id="la-configuration-standard-3-socles-roulants">2.3. La
-Configuration Standard : 3 Socles Roulants</h3>
+<h3 id="sec-2-3">
+2.3. La Configuration Standard : 3 Socles Roulants
+</h3>
 <p>L’assemblage d’un chariot de préparation repose sur l’association de
 <strong>3 socles roulants emboîtés</strong> :</p>
 <pre><code>┌───────────────────────────┬───────────────────────────┬───────────────────────────┐
@@ -1011,8 +902,9 @@ Configuration Standard : 3 Socles Roulants</h3>
 │   empilés en hauteur      │   boissons, droguerie     │   viandes, crémerie       │
 └───────────────────────────┴───────────────────────────┴───────────────────────────┘</code></pre>
 <hr />
-<h3 id="le-système-de-la-tour-de-bacs-lergonomie-de-préparation">2.4. Le
-Système de la Tour de Bacs &amp; L’Ergonomie de Préparation</h3>
+<h3 id="sec-2-4">
+2.4. Le Système de la Tour de Bacs &amp; L'Ergonomie de Préparation
+</h3>
 <div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>💡 <strong>Recommandation Ergonomique :</strong><br />
 La réduction des flexions lombaires répétées préserve la condition
 physique et améliore la cadence de collecte.</p></div></div>
@@ -1031,8 +923,9 @@ Sec situé en partie inférieure.</li>
 temps de tournée.</strong></li>
 </ol>
 <hr />
-<h3 id="les-3-plaquettes-le-lancement-sur-le-mob">2.5. Les 3 Plaquettes
-&amp; Le Lancement sur le Mob</h3>
+<h3 id="sec-2-5">
+2.5. Les 3 Plaquettes &amp; Le Lancement sur le Mob
+</h3>
 <ol type="1">
 <li>Munissez-vous des 3 fiches de commande (Sec, Frais, Surgelé).</li>
 <li>Insérez chaque fiche dans la <strong>plaquette transparente à
@@ -1044,15 +937,16 @@ code de la feuille de commande avec le lecteur laser du Mob pour ouvrir
 la mission sans recherche manuelle.</li>
 </ol>
 <hr />
-<h1 id="module-3-ladressage-en-magasin-le-scan-les-fruits-et-légumes">🗺️
-MODULE 3 : L’ADRESSAGE EN MAGASIN, LE SCAN &amp; LES FRUITS ET
-LÉGUMES</h1>
+<h1 id="module-3">
+🗺️ MODULE 3 : L'ADRESSAGE EN MAGASIN, LE SCAN &amp; LES FRUITS ET
+LÉGUMES
+</h1>
 <div class="workflow-bar"><span class="workflow-step">Lecture Adresse : G16 03</span><span class="workflow-arrow">➔</span><span class="workflow-step">Repérage Diode Verte</span><span class="workflow-arrow">➔</span><span class="workflow-step">Scan Laser Droit</span><span class="workflow-arrow">➔</span><span class="workflow-step">Collecte Groupée F&amp;L</span></div>
 <hr />
-<h3
-id="le-décodage-des-adresses-en-rayon-les-diodes-vertes-pick-to-light">3.1.
-Le Décodage des Adresses en Rayon &amp; Les Diodes Vertes
-(Pick-to-Light)</h3>
+<h3 id="sec-3-1">
+3.1. Le Décodage des Adresses en Rayon &amp; Les Diodes Vertes
+(Pick-to-Light)
+</h3>
 <p>Sur l’écran du Mob, chaque référence présente une désignation, un
 visuel et une <strong>adresse d’implantation</strong> (ex:
 <code>G16 03</code>).</p>
@@ -1071,8 +965,9 @@ lumineux (Pick-to-Light) :</h4>
 veille, sélectionnez l’article adjacent puis revenez sur la référence
 pour relancer le signal lumineux.</p>
 <hr />
-<h3 id="le-plan-dimplantation-des-rayons-g-e-d-b-c">3.2. Le Plan
-d’Implantation des Rayons (G, E, D, B, C)</h3>
+<h3 id="sec-3-2">
+3.2. Le Plan d'Implantation des Rayons (G, E, D, B, C)
+</h3>
 <pre><code>ORGANISATION DU MAGASIN SUPER U LOUVIGNÉ :
 [Accueil / Promos Frais] ➔ [G : Boissons / Bazar] ➔ [E : Animalerie / Lait / Entretien] ➔ [D : Épicerie] ➔ [B : Frais / F&amp;L / Surgelés] ➔ [C : Produits Marée / Traiteur / Boulangerie]</code></pre>
 <ul>
@@ -1115,8 +1010,9 @@ de tournée).</li>
 </ul></li>
 </ul>
 <hr />
-<h3 id="la-procédure-de-scan-le-contrôle-des-quantités-multiples">3.3.
-La Procédure de Scan &amp; Le Contrôle des Quantités Multiples</h3>
+<h3 id="sec-3-3">
+3.3. La Procédure de Scan &amp; Le Contrôle des Quantités Multiples
+</h3>
 <ul>
 <li><strong>Déclenchement du lecteur :</strong> Bouton laser situé sur
 la <strong>tranche latérale droite du Mob</strong>.</li>
@@ -1133,8 +1029,9 @@ client.</li>
 </ul></li>
 </ul>
 <hr />
-<h3 id="le-protocole-des-fruits-légumes-fl">3.4. Le Protocole des Fruits
-&amp; Légumes (F&amp;L)</h3>
+<h3 id="sec-3-4">
+3.4. Le Protocole des Fruits &amp; Légumes (F&amp;L)
+</h3>
 <p>Le secteur F&amp;L combine des articles <strong>À l’unité</strong>
 (avocats, barquettes préemballées) et des articles <strong>Au poids /
 Vrac</strong> (pommes, agrumes).</p>
@@ -1170,10 +1067,10 @@ référence en Rupture et procédez à un <strong>Ajout</strong> de la
 référence équivalente pour un montant identique.</li>
 </ol>
 <hr />
-<h1
-id="module-4-la-gestion-des-imprévus-produits-manquants-cas-particuliers">🧠
-MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS &amp; CAS
-PARTICULIERS)</h1>
+<h1 id="module-4">
+🧠 MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS &amp; CAS
+PARTICULIERS)
+</h1>
 <pre><code>                  ┌─────────────────────────────────────────────────────────┐
                   │                 RÉFÉRENCE INDISPONIBLE                  │
                   └────────────────────────────┬────────────────────────────┘
@@ -1189,9 +1086,9 @@ PARTICULIERS)</h1>
          • Intégrée et facturée dans la commande           • Article posé hors du sac au local
          • Déposée directement dans le sac                 • Soumise à l&#39;accord du client à l&#39;accueil</code></pre>
 <hr />
-<h3
-id="la-matrice-de-décision-rupture-vs-substitution-vs-proposition">4.1.
-La Matrice de Décision : Rupture vs Substitution vs Proposition</h3>
+<h3 id="sec-4-1">
+4.1. La Matrice de Décision : Rupture vs Substitution vs Proposition
+</h3>
 <table>
 <colgroup>
 <col style="width: 20%" />
@@ -1243,8 +1140,9 @@ disponible</strong></td>
 </tbody>
 </table>
 <hr />
-<h3 id="les-3-fonctions-du-mob-le-fonctionnement-de-la-proposition">4.2.
-Les 3 Fonctions du Mob &amp; Le Fonctionnement de la Proposition</h3>
+<h3 id="sec-4-2">
+4.2. Les 3 Fonctions du Mob &amp; Le Fonctionnement de la Proposition
+</h3>
 <div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>⚠️ <strong>Précision Technique :</strong><br />
 Le terminal Mob propose 3 actions : <strong>Repasse</strong>,
 <strong>Substitution</strong>, <strong>Rupture</strong>.<br />
@@ -1253,8 +1151,9 @@ place d’une proposition consiste à <strong>valider la Rupture sur le
 terminal</strong> et à <strong>prendre physiquement l’article alternatif
 pour le positionner au sommet du bac</strong>.</p></div></div>
 <hr />
-<h3 id="la-repasse-la-gestion-des-délais">4.3. La Repasse &amp; La
-Gestion des Délais</h3>
+<h3 id="sec-4-3">
+4.3. La Repasse &amp; La Gestion des Délais
+</h3>
 <ul>
 <li><strong>Définition :</strong> L’option “Repasse” met l’article en
 attente (la commande prend le statut <strong>BLEU</strong> sur le
@@ -1269,10 +1168,10 @@ directe, Proposition ou Rupture.</li>
 </ul></li>
 </ul>
 <hr />
-<h3
-id="les-anomalies-logiciel-stock-à-0-adresses-imprécises-bouton-crayon">4.4.
-Les Anomalies Logiciel : Stock à 0, Adresses Imprécises &amp; Bouton
-Crayon ✏️</h3>
+<h3 id="sec-4-4">
+4.4. Les Anomalies Logiciel : Stock à 0, Adresses Imprécises &amp;
+Bouton Crayon ✏️
+</h3>
 <ol type="1">
 <li><strong>Références en anomalie de stock (Stock théorique nul mais
 commandable) :</strong> Procédez directement à une substitution ou
@@ -1287,8 +1186,9 @@ d’absence de photo sur le Mob, une recherche rapide sur smartphone
 permet de visualiser le conditionnement du produit.</li>
 </ol>
 <hr />
-<h3 id="lemplacement-des-produits-promotionnels">4.5. L’Emplacement des
-Produits Promotionnels</h3>
+<h3 id="sec-4-5">
+4.5. L'Emplacement des Produits Promotionnels
+</h3>
 <pre><code>┌─────────────────────────────────────────────────────────────────────────┐
 │                 ZONES D&#39;IMPLANTATION DES PROMOTIONS                     │
 ├─────────────────────────────────────────────────────────────────────────┤
@@ -1298,14 +1198,15 @@ Produits Promotionnels</h3>
 │ 4. 📦 FOND DE RAYON HABITUEL : Signalétique jaune de promotion          │
 └─────────────────────────────────────────────────────────────────────────┘</code></pre>
 <hr />
-<h1 id="module-5-le-retour-au-local-la-livraison-les-encaissements">🚗
-MODULE 5 : LE RETOUR AU LOCAL, LA LIVRAISON &amp; LES ENCAISSEMENTS</h1>
+<h1 id="module-5">
+🚗 MODULE 5 : LE RETOUR AU LOCAL, LA LIVRAISON &amp; LES ENCAISSEMENTS
+</h1>
 <div class="workflow-bar"><span class="workflow-step">Saisie des Sacs 0,26 €</span><span class="workflow-arrow">➔</span><span class="workflow-step">Édition Bon de Remise &amp; Annotations</span><span class="workflow-arrow">➔</span><span class="workflow-step">Rangement Frigo/Congélo/Sec</span><span class="workflow-arrow">➔</span><span class="workflow-step">Prise en charge Borne</span><span class="workflow-arrow">➔</span><span class="workflow-step">Règlement au Poste PC</span></div>
 <hr />
-<h3
-id="la-clôture-de-collecte-sur-le-mob-sacs-026-vigilance-système">5.1.
-La Clôture de Collecte sur le Mob, Sacs (0,26 €) &amp; Vigilance
-Système</h3>
+<h3 id="sec-5-1">
+5.1. La Clôture de Collecte sur le Mob, Sacs (0,26 €) &amp; Vigilance
+Système
+</h3>
 <ol type="1">
 <li>En fin de tournée, le Mob présente l’écran récapitulatif.
 Sélectionnez <strong>Voir les écarts</strong>.</li>
@@ -1325,8 +1226,9 @@ réinitialisation de la commande au poste PC. Annulez toute substitution
 comportant une quantité demandée à 0 avant clôture.</li>
 </ol>
 <hr />
-<h3 id="limpression-du-bon-de-remise-les-annotations-manuscrites">5.2.
-L’Impression du Bon de Remise &amp; Les Annotations Manuscrites</h3>
+<h3 id="sec-5-2">
+5.2. L'Impression du Bon de Remise &amp; Les Annotations Manuscrites
+</h3>
 <ol type="1">
 <li>Sur le PC, la commande bascule au statut <strong>VIOLET
 (Préparé)</strong>.</li>
@@ -1344,10 +1246,10 @@ l’objet d’un produit de remplacement déposé sur le bac.</li>
 planning.</li>
 </ol>
 <hr />
-<h3
-id="le-stockage-au-local-drive-chambre-froide-congélateurs-zone-sèche">5.3.
-Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone
-Sèche)</h3>
+<h3 id="sec-5-3">
+5.3. Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone
+Sèche)
+</h3>
 <ul>
 <li>🥖 <strong>Zone Sèche :</strong> Bacs rangés sur étagères ou socles
 mobiles avec la fiche Sec.</li>
@@ -1365,10 +1267,10 @@ d’identification fixées sur les sacs).</li>
 manière bien visible.</li>
 </ul>
 <hr />
-<h3
-id="bis.-le-téléphone-portable-du-drive-la-réception-des-appels-clients">📞
-5.3.bis. Le Téléphone Portable du Drive &amp; La Réception des Appels
-Clients</h3>
+<h3 id="sec-5-3bis">
+📞 5.3.bis. Le Téléphone Portable du Drive &amp; La Réception des Appels
+Clients
+</h3>
 <p>Le local Drive dispose d’un <strong>téléphone portable
 professionnel</strong> destiné aux communications avec les clients : -
 Lorsque le combiné sonne pendant une tournée de collecte :
@@ -1379,8 +1281,9 @@ commande. - <strong>Protocole :</strong> Notez l’information et
 reportez-la au retour sur le <strong>Bon de remise</strong> de la
 commande pour informer l’équipe.</p>
 <hr />
-<h3 id="lassemblage-et-la-remise-client-à-la-borne">5.4. L’Assemblage et
-la Remise Client à la Borne</h3>
+<h3 id="sec-5-4">
+5.4. L'Assemblage et la Remise Client à la Borne
+</h3>
 <ol type="1">
 <li>À la sonnerie d’alerte sur le Mob, sélectionnez <strong>“Je prends
 en charge”</strong>.</li>
@@ -1393,10 +1296,10 @@ du Congélateur ➔ Vérifiez les articles en Proposition.</li>
 <li>Rendez-vous sur la piste Drive auprès du véhicule du client.</li>
 </ol>
 <hr />
-<h3
-id="lencaissement-au-poste-caisse-propositions-annulations-sacs-bons-u">5.5.
-L’Encaissement au Poste Caisse (Propositions, Annulations, Sacs, Bons
-U)</h3>
+<h3 id="sec-5-5">
+5.5. L'Encaissement au Poste Caisse (Propositions, Annulations, Sacs,
+Bons U)
+</h3>
 <ol type="1">
 <li>Récupérez le Bon de remise dans le bac.</li>
 <li>Déverrouillez le logiciel à l’aide du code caisse, puis
@@ -1419,10 +1322,10 @@ APRÈS l’appui sur Total</strong>. Déposez les coupons dans le
 tiroir-caisse.</li>
 </ol>
 <hr />
-<h3
-id="les-modes-de-paiement-cb-espèces-chèques-comptes-professionnels-aubépine">5.6.
-Les Modes de Paiement (CB, Espèces, Chèques, Comptes Professionnels
-&amp; Aubépine)</h3>
+<h3 id="sec-5-6">
+5.6. Les Modes de Paiement (CB, Espèces, Chèques, Comptes Pros &amp;
+Aubépine)
+</h3>
 <ul>
 <li>💳 <strong>Carte Bancaire :</strong> Cliquez sur
 <code>Cartes →</code> puis <code>Carte</code> ➔ Règlement sur le
@@ -1445,10 +1348,10 @@ spécifique établi par la responsable ➔ Aucun encaissement au guichet
 (gestion centralisée).</li>
 </ul>
 <hr />
-<h3
-id="les-commandes-réglées-en-ligne-e-commerce-max-autorisé-euros-carte-u-duplicata-archivage">5.7.
-Les Commandes Réglées en Ligne (E-commerce, Max Autorisé, Euros Carte U,
-Duplicata &amp; Archivage)</h3>
+<h3 id="sec-5-7">
+5.7. Les Commandes Réglées en Ligne (E-commerce, Max Autorisé, Euros
+Carte U, Duplicata &amp; Archivage)
+</h3>
 <ol type="1">
 <li><strong>Contrôle du “Max Paiement en Ligne” :</strong><br />
 Vérifiez que le montant final ne dépasse pas le plafond d’autorisation
@@ -1476,10 +1379,10 @@ ticket de caisse agrafé).</li>
 </ul></li>
 </ol>
 <hr />
-<h3
-id="la-distribution-des-bouteilles-de-gaz-sécurité-procédure-déchange-facturation">5.8.
-La Distribution des Bouteilles de Gaz (Sécurité, Procédure d’Échange
-&amp; Facturation)</h3>
+<h3 id="sec-5-8">
+5.8. La Distribution des Bouteilles de Gaz (Sécurité, Procédure
+d'Échange &amp; Facturation)
+</h3>
 <ol type="1">
 <li><strong>Consignes d’accès :</strong> Munissez-vous du trousseau de
 clés gaz et positionnez la porte automatique en <strong>mode Ouverture
@@ -1497,16 +1400,16 @@ tarif par le client.</li>
 <strong>mode Sens Interdit</strong>.</li>
 </ol>
 <hr />
-<h1
-id="module-6-la-fermeture-du-soir-la-clôture-de-caisse-19h20-19h45">🌙
-MODULE 6 : LA FERMETURE DU SOIR &amp; LA CLÔTURE DE CAISSE (19h20 –
-19h45)</h1>
+<h1 id="module-6">
+🌙 MODULE 6 : LA FERMETURE DU SOIR &amp; LA CLÔTURE DE CAISSE (19h20 –
+19h45)
+</h1>
 <div class="workflow-bar"><span class="workflow-step">19h30 Fermeture Accès</span><span class="workflow-arrow">➔</span><span class="workflow-step">DÉCONNEXION U LIVREUR</span><span class="workflow-arrow">➔</span><span class="workflow-step">Prélèvement Espèces</span><span class="workflow-arrow">➔</span><span class="workflow-step">Pochette Rouge</span><span class="workflow-arrow">➔</span><span class="workflow-step">Comptage Caisse</span><span class="workflow-arrow">➔</span><span class="workflow-step">Dépôt Coffre</span><span class="workflow-arrow">➔</span><span class="workflow-step">Contrôle Frigos</span><span class="workflow-arrow">➔</span><span class="workflow-step">Préparation Lendemain</span><span class="workflow-arrow">➔</span><span class="workflow-step">Badgeuse</span></div>
 <hr />
-<h3
-id="les-horaires-de-clôture-la-déconnexion-obligatoire-de-u-livreur">6.1.
-Les Horaires de Clôture &amp; La Déconnexion Obligatoire de U
-Livreur</h3>
+<h3 id="sec-6-1">
+6.1. Les Horaires de Clôture &amp; La Déconnexion Obligatoire de U
+Livreur
+</h3>
 <ul>
 <li><strong>Horaires de fin de service :</strong> Fermeture du service à
 <strong>19h30</strong> (lundi à vendredi) et <strong>18h30</strong>
@@ -1520,10 +1423,10 @@ Ouvrez U Livreur ➔ Sélectionnez vos initiales ➔
 après votre service).</em></li>
 </ul>
 <hr />
-<h3
-id="la-procédure-de-clôture-de-caisse-prélèvement-comptage-des-rouleaux">6.2.
-La Procédure de Clôture de Caisse : Prélèvement &amp; Comptage des
-Rouleaux</h3>
+<h3 id="sec-6-2">
+6.2. La Procédure de Clôture de Caisse : Prélèvement &amp; Comptage des
+Rouleaux
+</h3>
 <ol type="1">
 <li><strong>Prélèvement des coupures principales :</strong><br />
 Menu <strong>Divers</strong> ➔ <strong>Gestion de tiroir</strong> ➔
@@ -1546,9 +1449,9 @@ individuelles et ajoutez-les aux espèces en vrac dans la colonne
 saisie.</li>
 </ol>
 <hr />
-<h3
-id="la-gestion-des-écarts-de-caisse-assistance-accueil---poste-1">6.3.
-La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)</h3>
+<h3 id="sec-6-3">
+6.3. La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)
+</h3>
 <ol type="1">
 <li>Après validation des montants, cliquez sur <strong>Accepter</strong>
 ➔ <strong>Sauvegarder</strong>.</li>
@@ -1563,8 +1466,9 @@ responsable.</li>
 </ul></li>
 </ol>
 <hr />
-<h3 id="la-sécurisation-des-fonds-pochettes-dépôt-au-coffre">6.4. La
-Sécurisation des Fonds, Pochettes &amp; Dépôt au Coffre</h3>
+<h3 id="sec-6-4">
+6.4. La Sécurisation des Fonds, Pochettes &amp; Dépôt au Coffre
+</h3>
 <ol type="1">
 <li><strong>Organisation des pochettes de clôture :</strong>
 <ul>
@@ -1578,8 +1482,9 @@ métallique sur le tiroir et verrouillez-le à clé.</li>
 pochettes dans le coffre sécurisé du magasin.</li>
 </ol>
 <hr />
-<h3 id="bis.-la-gestion-des-commandes-non-retirées-en-fin-de-journée">📦
-6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée</h3>
+<h3 id="sec-6-4bis">
+📦 6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée
+</h3>
 <p>Si une commande demeure non réclamée à l’approche de la fermeture :
 1. <strong>Contact de courtoisie :</strong> Entre 18h30 et 19h00,
 contactez le client par téléphone afin de faire le point sur son
@@ -1591,8 +1496,9 @@ local</strong> (zone dédiée aux reports). - 🥩🧀 <strong>Zone Frais
 <strong>Zone Surgelé :</strong> Maintenez les articles dans les
 conservateurs négatifs.</p>
 <hr />
-<h3 id="le-contrôle-sanitaire-des-équipements-frigorifiques">6.5. Le
-Contrôle Sanitaire des Équipements Frigorifiques</h3>
+<h3 id="sec-6-5">
+6.5. Le Contrôle Sanitaire des Équipements Frigorifiques
+</h3>
 <div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>⚠️ <strong>CONTRÔLE DE LA CHAÎNE DU FROID :</strong><br />
 Effectuez la vérification physique des installations : - Contrôlez la
 fermeture hermétique de la porte de la <strong>Chambre Froide
@@ -1600,8 +1506,9 @@ Drive</strong>. - Vérifiez l’enclenchement complet des portes des
 <strong>Congélateurs</strong>. - Assurez-vous de l’absence de produits
 hors des zones thermiques dédiées.</p></div></div>
 <hr />
-<h3 id="la-préparation-du-service-du-lendemain-clôture-finale">6.6. La
-Préparation du Service du Lendemain &amp; Clôture Finale</h3>
+<h3 id="sec-6-6">
+6.6. La Préparation du Service du Lendemain &amp; Clôture Finale
+</h3>
 <ol type="1">
 <li><strong>Montage des chariots de collecte pour l’équipe du matin
 :</strong>
@@ -1627,11 +1534,13 @@ Drive.</li>
 <strong>Fin de service.</strong></li>
 </ol>
 <hr />
-<h1 id="annexes-fiches-réflexes-opérationnelles">📋 ANNEXES &amp; FICHES
-RÉFLEXES OPÉRATIONNELLES</h1>
+<h1 id="annexes">
+📋 ANNEXES &amp; FICHES RÉFLEXES OPÉRATIONNELLES
+</h1>
 <hr />
-<h3 id="annexe-1-la-grille-de-contrôle-chronologique">Annexe 1 : La
-Grille de Contrôle Chronologique</h3>
+<h3 id="annexe-1">
+Annexe 1 : La Grille de Contrôle Chronologique
+</h3>
 <pre class="text"><code>🌅 OUVERTURE DU MATIN (6h00 / 7h30)
 [ ] 1. Enregistrement badgeuse (respecter 1 min d&#39;intervalle)
 [ ] 2. Déverrouillage rideau métallique + retrait barrière de sécurité
@@ -1670,8 +1579,9 @@ Grille de Contrôle Chronologique</h3>
 [ ] 8. Mise en charge du Mob et téléphones ➔ Extinction complète du PC
 [ ] 9. Repositionnement barrière de protection ➔ Verrouillage rideau métallique ➔ Badgeuse départ</code></pre>
 <hr />
-<h3 id="annexe-2-le-référentiel-des-6-statuts-couleur-sur-pc">Annexe 2 :
-Le Référentiel des 6 Statuts Couleur sur PC</h3>
+<h3 id="annexe-2">
+Annexe 2 : Le Référentiel des 6 Statuts Couleur sur PC
+</h3>
 <table>
 <colgroup>
 <col style="width: 33%" />
@@ -1725,8 +1635,9 @@ Commande prête pour mise à disposition client.</td>
 </tbody>
 </table>
 <hr />
-<h3 id="annexe-3-annuaire-des-postes-internes-contacts-clés">Annexe 3 :
-Annuaire des Postes Internes &amp; Contacts Clés</h3>
+<h3 id="annexe-3">
+Annexe 3 : Annuaire des Postes Internes &amp; Contacts Clés
+</h3>
 <table>
 <colgroup>
 <col style="width: 33%" />
@@ -1801,7 +1712,7 @@ contrats, plannings.</td>
 
 <script>
 let isEditMode = false;
-const STORAGE_KEY = 'super_u_guide_content_public_v1';
+const STORAGE_KEY = 'super_u_guide_content_public_v2';
 
 window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem(STORAGE_KEY);
