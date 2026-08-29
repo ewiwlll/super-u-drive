@@ -8,647 +8,466 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root {
-    --primary: #002F6C;
-    --primary-hover: #001A3D;
-    --accent-red: #E30613;
-    --accent-green: #16A34A;
-    --accent-amber: #D97706;
-    --text-main: #1E293B;
-    --text-muted: #64748B;
-    --bg-page: #F8FAFC;
-    --bg-card: #FFFFFF;
-    --border-color: #E2E8F0;
-    --radius: 12px;
-}
+  :root {
+    --u-blue: #002F6C;
+    --u-blue-dark: #001B40;
+    --u-blue-light: #EBF3FC;
+    --u-red: #E30613;
+    --u-red-light: #FDEDEE;
+    --u-gray-bg: #F8FAFC;
+    --u-border: #E2E8F0;
+    --u-text: #1E293B;
+    --u-text-muted: #64748B;
+    --u-green: #059669;
+    --u-green-light: #ECFDF5;
+    --u-amber: #D97706;
+    --u-amber-light: #FFFBEB;
+    --u-purple: #7C3AED;
+    --u-purple-light: #F5F3FF;
+  }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: var(--text-main);
-    background-color: var(--bg-page);
-    line-height: 1.7;
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--u-text);
+    background-color: var(--u-gray-bg);
+    line-height: 1.65;
     font-size: 15px;
-    padding-top: 80px;
-    padding-bottom: 60px;
-}
+    padding-top: 65px;
+  }
 
-/* TOP FLOATING ACTION TOOLBAR */
-.top-toolbar {
+  /* Top Toolbar */
+  .top-toolbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 65px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--u-border);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 25px;
+    padding: 0 24px;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  }
 
-.toolbar-brand {
+  .toolbar-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-weight: 800;
-    color: var(--primary);
-    font-size: 15px;
-}
+    font-size: 1.05rem;
+    color: var(--u-blue);
+  }
 
-.toolbar-actions {
+  .toolbar-brand span {
+    background: var(--u-blue-light);
+    color: var(--u-blue);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .toolbar-actions {
     display: flex;
     align-items: center;
     gap: 10px;
-}
+  }
 
-.btn {
+  .btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 15px;
+    padding: 8px 14px;
     border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
-    text-decoration: none;
-}
-
-.btn-primary {
-    background-color: var(--primary);
-    color: white;
-}
-.btn-primary:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-1px);
-}
-
-.btn-edit {
-    background-color: #FEF3C7;
-    color: #92400E;
-    border-color: #FCD34D;
-}
-.btn-edit.active {
-    background-color: #DC2626;
-    color: white;
-    border-color: #B91C1C;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-}
-
-.btn-outline {
-    background-color: white;
-    color: var(--text-main);
-    border-color: var(--border-color);
-}
-.btn-outline:hover {
-    background-color: #F1F5F9;
-}
-
-.btn-save {
-    background-color: #ECFDF5;
-    color: #065F46;
-    border-color: #A7F3D0;
-}
-.btn-save:hover {
-    background-color: #D1FAE5;
-}
-
-/* EDIT STATUS BANNER */
-.edit-status-banner {
-    display: none;
-    background-color: #FEF2F2;
-    color: #991B1B;
-    border: 1px dashed #DC2626;
-    padding: 10px 18px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 13.5px;
+    font-size: 0.85rem;
     font-weight: 600;
-    align-items: center;
-    justify-content: space-between;
-}
-.edit-status-banner.visible {
-    display: flex;
-}
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+  }
 
-/* MAIN CONTAINER */
-.container {
-    max-width: 940px;
-    margin: 0 auto;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    padding: 50px 60px;
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
-}
+  .btn-primary { background: var(--u-blue); color: #FFF; }
+  .btn-primary:hover { background: var(--u-blue-dark); transform: translateY(-1px); }
+  .btn-secondary { background: #F1F5F9; color: var(--u-text); border: 1px solid var(--u-border); }
+  .btn-secondary:hover { background: #E2E8F0; }
+  .btn-danger { background: var(--u-red-light); color: var(--u-red); }
+  .btn-danger:hover { background: #FCD8D9; }
 
-/* HERO HEADER WITH PUBLIC QR CODE */
-.hero-header {
-    background: linear-gradient(135deg, #002F6C 0%, #001A3D 100%);
-    color: white;
-    padding: 35px;
+  /* Edit banner */
+  .edit-banner {
+    display: none;
+    background: #FEF3C7;
+    border-bottom: 1px solid #FDE68A;
+    color: #92400E;
+    padding: 8px 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+
+  /* Page Layout */
+  .page-container {
+    max-width: 960px;
+    margin: 30px auto 60px;
+    background: #FFFFFF;
+    border: 1px solid var(--u-border);
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+  }
+
+  /* Hero Header */
+  .hero-card {
+    background: linear-gradient(135deg, var(--u-blue-dark) 0%, var(--u-blue) 100%);
+    color: #FFFFFF;
     border-radius: 14px;
-    margin-bottom: 35px;
+    padding: 36px;
+    margin-bottom: 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 25px;
-    box-shadow: 0 8px 25px rgba(0, 47, 108, 0.2);
-}
+    gap: 24px;
+  }
 
-.hero-left {
-    flex: 1;
-}
-
-.hero-badge {
-    display: inline-block;
-    background-color: var(--accent-red);
-    color: white;
-    font-size: 11px;
+  .hero-text h1 {
+    font-size: 1.85rem;
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 5px 12px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-}
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
 
-.hero-title {
-    font-size: 25px;
-    font-weight: 800;
-    line-height: 1.25;
-    margin-bottom: 10px;
-    letter-spacing: -0.5px;
-    color: white;
-}
+  .hero-text p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 16px;
+  }
 
-.hero-desc {
-    font-size: 14.5px;
-    color: #93C5FD;
-    margin-bottom: 18px;
-    font-weight: 500;
-}
-
-.hero-meta {
+  .hero-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px 22px;
-    font-size: 12.5px;
-    color: #CBD5E1;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-top: 14px;
-}
+    gap: 8px;
+  }
 
-/* QR CODE CARD */
-.qr-card {
-    background: white;
-    padding: 12px 14px;
+  .hero-badge {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  .hero-qr {
+    background: #FFFFFF;
+    padding: 12px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     flex-shrink: 0;
-    width: 145px;
-}
+  }
 
-.qr-card img {
-    width: 115px;
-    height: 115px;
+  .hero-qr img {
+    width: 120px;
+    height: 120px;
     display: block;
-    margin: 0 auto;
     border-radius: 6px;
-}
+  }
 
-.qr-caption {
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--primary);
+  .hero-qr span {
+    display: block;
     margin-top: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--u-blue);
+  }
 
-.qr-url {
-    font-size: 8.5px;
-    color: #64748B;
-    margin-top: 2px;
-    word-break: break-all;
-}
-
-/* TABLE OF CONTENTS */
-.toc-container {
-    background-color: #F1F5F9;
-    border: 1px solid #CBD5E1;
-    border-radius: 12px;
-    padding: 26px 32px;
-    margin-bottom: 45px;
-}
-
-.toc-container h2 {
-    color: var(--primary);
-    font-size: 18px;
+  /* Typography & Structure */
+  h1 {
+    font-size: 1.45rem;
     font-weight: 800;
-    margin-bottom: 16px;
-    border-bottom: 2px solid #CBD5E1;
-    padding-bottom: 8px;
-}
+    color: var(--u-blue-dark);
+    margin-top: 42px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--u-blue-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    scroll-margin-top: 80px;
+  }
 
-.toc-container ul {
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--u-blue);
+    margin-top: 28px;
+    margin-bottom: 14px;
+    scroll-margin-top: 80px;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--u-text);
+    margin-top: 24px;
+    margin-bottom: 10px;
+    scroll-margin-top: 80px;
+  }
+
+  h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--u-blue);
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  p { margin-bottom: 14px; }
+  ul, ol { margin-bottom: 16px; padding-left: 24px; }
+  li { margin-bottom: 6px; }
+
+  /* TOC styling */
+  .toc-container {
+    background: #F8FAFC;
+    border: 1px solid var(--u-border);
+    border-radius: 12px;
+    padding: 24px 30px;
+    margin-bottom: 36px;
+  }
+
+  .toc-container h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toc-container ul {
     list-style: none;
     padding-left: 0;
-}
-
-.toc-container > ul > li {
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-.toc-container > ul > li > a {
-    color: var(--primary);
-    text-decoration: none;
-    font-size: 15px;
-    display: inline-block;
-    padding: 2px 0;
-}
-
-.toc-container > ul > li > a:hover {
-    color: var(--accent-red);
-    text-decoration: underline;
-}
-
-.toc-container ul ul {
-    list-style: disc;
-    padding-left: 24px;
-    margin-top: 6px;
-}
-
-.toc-container ul ul li {
-    font-weight: 500;
-    font-size: 13.5px;
-    margin-bottom: 4px;
-}
-
-.toc-container ul ul a {
-    color: #475569;
-    text-decoration: none;
-    padding: 2px 0;
-    display: inline-block;
-}
-
-.toc-container ul ul a:hover {
-    color: var(--primary);
-    text-decoration: underline;
-    font-weight: 600;
-}
-
-/* SCROLL MARGIN FOR HEADINGS */
-h1, h2, h3, h4 {
-    scroll-margin-top: 85px;
-}
-
-/* HEADINGS */
-h1 {
-    color: var(--primary);
-    font-size: 21px;
-    font-weight: 800;
-    background: linear-gradient(to right, #F1F5F9, transparent);
-    border-left: 6px solid var(--primary);
-    padding: 10px 18px;
-    border-radius: 0 8px 8px 0;
-    margin-top: 50px;
-    margin-bottom: 22px;
-    letter-spacing: -0.3px;
-}
-
-h2 {
-    color: #0F172A;
-    font-size: 17.5px;
-    font-weight: 700;
-    margin-top: 32px;
-    margin-bottom: 14px;
-}
-
-h3 {
-    color: #1E293B;
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 26px;
-    margin-bottom: 12px;
-}
-
-h4 {
-    color: #334155;
-    font-size: 14.5px;
-    font-weight: 700;
-    margin-top: 20px;
-    margin-bottom: 8px;
-}
-
-p {
-    margin-bottom: 16px;
-}
-
-/* WORKFLOW PROGRESSION BAR */
-.workflow-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    background: #0F172A;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    margin: 18px 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.workflow-step {
-    background: rgba(255, 255, 255, 0.12);
-    padding: 5px 12px;
-    border-radius: 6px;
-    color: #F8FAFC;
-}
-
-.workflow-arrow {
-    color: #38BDF8;
-    font-weight: 800;
-    font-size: 14px;
-}
-
-/* CALLOUTS */
-.callout {
-    display: flex;
-    gap: 14px;
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin: 22px 0;
-    font-size: 14px;
-    border-left: 5px solid;
-}
-
-.callout-icon {
-    font-size: 22px;
-    line-height: 1.2;
-    flex-shrink: 0;
-}
-
-.callout-content {
-    flex-grow: 1;
-}
-
-.callout-content p:last-child {
     margin-bottom: 0;
-}
+  }
 
-.callout-danger {
-    background-color: #FEF2F2;
-    border-color: #DC2626;
-    color: #991B1B;
-}
-
-.callout-warning {
-    background-color: #FFFBEB;
-    border-color: #D97706;
-    color: #92400E;
-}
-
-.callout-tip {
-    background-color: #F0FDF4;
-    border-color: #16A34A;
-    color: #166534;
-}
-
-.callout-info {
-    background-color: #EFF6FF;
-    border-color: #2563EB;
-    color: #1E40AF;
-}
-
-.callout strong {
-    color: inherit;
-}
-
-/* TABLES */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 24px 0;
-    font-size: 14px;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    border: 1px solid var(--border-color);
-}
-
-th {
-    background-color: var(--primary);
-    color: white;
+  .toc-container > ul > li {
+    margin-bottom: 12px;
     font-weight: 700;
-    text-align: left;
-    padding: 11px 15px;
-    font-size: 14px;
-}
+  }
 
-td {
-    padding: 10px 15px;
-    border-bottom: 1px solid var(--border-color);
-    vertical-align: middle;
-}
+  .toc-container > ul > li > a {
+    color: var(--u-blue);
+    text-decoration: none;
+  }
 
-tr:nth-child(even) td {
-    background-color: #F8FAFC;
-}
+  .toc-container > ul > li > a:hover {
+    text-decoration: underline;
+  }
 
-tr:hover td {
-    background-color: #F1F5F9;
-}
+  .toc-container ul ul {
+    list-style: none;
+    padding-left: 18px;
+    margin-top: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
 
-/* CODE & MONOSPACE */
-pre {
-    background-color: #0F172A;
+  .toc-container ul ul li {
+    margin-bottom: 4px;
+  }
+
+  .toc-container ul ul a {
+    color: var(--u-text-muted);
+    text-decoration: none;
+  }
+
+  .toc-container ul ul a:hover {
+    color: var(--u-red);
+    text-decoration: underline;
+  }
+
+  /* Boxes & Code */
+  pre {
+    background: #0F172A;
     color: #F8FAFC;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    line-height: 1.5;
-    padding: 16px 20px;
-    border-radius: 8px;
+    font-size: 0.82rem;
+    padding: 18px;
+    border-radius: 10px;
     overflow-x: auto;
-    margin: 18px 0;
-}
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
 
-code {
+  code {
     font-family: 'JetBrains Mono', monospace;
-    background-color: #F1F5F9;
-    color: #0F172A;
+    background: #F1F5F9;
+    color: var(--u-blue);
     padding: 2px 6px;
     border-radius: 4px;
-    font-size: 13px;
-    border: 1px solid #E2E8F0;
-}
+    font-size: 0.88em;
+    font-weight: 600;
+  }
 
-pre code {
-    background-color: transparent;
+  pre code {
+    background: transparent;
     color: inherit;
     padding: 0;
-    border: none;
-    font-size: inherit;
-}
+  }
 
-/* LISTS */
-ul, ol {
-    margin-bottom: 16px;
-    padding-left: 24px;
-}
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 22px;
+    font-size: 0.9rem;
+  }
 
-li {
-    margin-bottom: 6px;
-}
+  th, td {
+    padding: 10px 14px;
+    border: 1px solid var(--u-border);
+    text-align: left;
+  }
 
-/* HORIZONTAL RULE */
-hr {
-    border: none;
-    height: 1px;
-    background: var(--border-color);
-    margin: 32px 0;
-}
-
-/* EDITABLE HIGHLIGHTING */
-[contenteditable="true"] {
-    outline: 2px dashed #93C5FD !important;
-    padding: 4px !important;
-    border-radius: 4px;
-    background-color: rgba(239, 246, 255, 0.3);
-}
-
-[contenteditable="true"]:focus {
-    outline: 2px solid var(--primary) !important;
-    background-color: #FFFFFF;
-}
-
-/* TOAST NOTIFICATION */
-.toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: #0F172A;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 14px;
-    font-weight: 600;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.toast.show {
-    transform: translateX(-50%) translateY(0);
-}
-
-/* FLOATING BACK TO TOP */
-.back-to-top {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: var(--primary);
-    color: white;
-    padding: 10px 18px;
-    border-radius: 30px;
-    text-decoration: none;
+  th {
+    background: #F1F5F9;
     font-weight: 700;
-    font-size: 13px;
-    box-shadow: 0 4px 15px rgba(0, 47, 108, 0.3);
-    transition: transform 0.2s, background 0.2s;
-    z-index: 900;
-}
+    color: var(--u-blue);
+  }
 
-.back-to-top:hover {
-    background: #001A3D;
-    transform: translateY(-2px);
-}
+  tr:nth-child(even) {
+    background: #F8FAFC;
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 30px;
+    padding: 8px 16px;
+    background: #F1F5F9;
+    color: var(--u-text-muted);
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .back-to-top:hover {
+    background: #E2E8F0;
+    color: var(--u-text);
+  }
+
+  /* Toast Notification */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--u-blue-dark);
+    color: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Print Styles */
+  @media print {
+    body {
+      padding-top: 0;
+      background: #FFF;
+      font-size: 12pt;
+    }
+    .top-toolbar, .edit-banner, .toast, .back-to-top {
+      display: none !important;
+    }
+    .page-container {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      max-width: 100%;
+    }
+    .hero-card {
+      background: var(--u-blue) !important;
+      color: #FFF !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    pre, blockquote, table {
+      page-break-inside: avoid;
+    }
+    h1, h2, h3 {
+      page-break-after: avoid;
+    }
+  }
 </style>
 </head>
 <body>
 
-<!-- CLEAN ACTION TOOLBAR -->
 <div class="top-toolbar">
-    <div class="toolbar-brand">
-        <span>📘 Super U Louvigné</span>
-        <span style="font-weight: 400; color: #94A3B8;">|</span>
-        <span style="font-size: 13px; font-weight: 600; color: #64748B;">Manuel Opérationnel</span>
-    </div>
-    <div class="toolbar-actions">
-        <button id="toggleEditBtn" class="btn btn-edit" onclick="toggleEditMode()">✏️ Modifier le texte</button>
-        <button class="btn btn-save" onclick="saveEdits()">💾 Enregistrer</button>
-        <button class="btn btn-outline" onclick="resetToOriginal()">🔄 Réinitialiser</button>
-        <a href="GUIDE_DU_NOUVEAU_DRIVE_SUPER_U.pdf" download="GUIDE_DU_NOUVEAU_DRIVE_SUPER_U.pdf" class="btn btn-primary">📥 Télécharger en PDF</a>
-    </div>
+  <div class="toolbar-brand">
+    📘 Super U Louvigné <span>Manuel Opérationnel</span>
+  </div>
+  <div class="toolbar-actions">
+    <button class="btn btn-secondary" id="btn-edit" onclick="toggleEditMode()">✏️ Modifier le texte</button>
+    <button class="btn btn-primary" id="btn-save" onclick="saveEdits()" style="display:none;">💾 Enregistrer</button>
+    <button class="btn btn-danger" id="btn-reset" onclick="resetDefault()" style="display:none;">🔄 Réinitialiser</button>
+    <button class="btn btn-primary" onclick="window.print()">📥 Télécharger en PDF</button>
+  </div>
 </div>
 
-<div class="container">
+<div class="edit-banner" id="edit-banner">
+  ✏️ <strong>Mode Modification Actif :</strong> Cliquez n'importe où sur le document pour modifier du texte ou ajouter des consignes. 
+  <a href="javascript:void(0)" onclick="resetDefault()" style="color: #92400E; margin-left: 12px;">🔄 Remettre le texte original</a>
+</div>
 
-    <div id="editStatusBanner" class="edit-status-banner">
-        <span>✏️ <strong>Mode Modification Actif :</strong> Cliquez n'importe où sur le document pour modifier du texte ou ajouter des consignes.</span>
-        <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="resetToOriginal()">🔄 Remettre le texte original</button>
+<div class="page-container" id="doc-content">
+  <div class="hero-card">
+    <div class="hero-text">
+      <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; margin-bottom: 6px;">Super U Louvigné-du-Désert • Manuel Opérationnel</div>
+      <h1>📘 MANUEL OPÉRATIONNEL DU DRIVE SUPER U</h1>
+      <p>Guide de formation et procédures métier - Préparation, Collecte, Livraison & Encaissement.</p>
+      <div class="hero-badges">
+        <div class="hero-badge">📍 Magasin Super U Louvigné</div>
+        <div class="hero-badge">⏱️ Temps de lecture : ~15 minutes</div>
+        <div class="hero-badge">🎯 6 Modules Procédures + 3 Annexes</div>
+      </div>
     </div>
-
-    <!-- HERO HEADER WITH PUBLIC QR CODE -->
-    <div class="hero-header">
-        <div class="hero-left">
-            <div class="hero-badge">Super U Louvigné-du-Désert • Manuel Opérationnel</div>
-            <h1 class="hero-title" style="color: white; background: transparent; border: none; padding: 0; margin-top: 0;">📘 MANUEL OPÉRATIONNEL DU DRIVE SUPER U</h1>
-            <div class="hero-desc">Guide de formation et procédures métier - Préparation, Collecte, Livraison & Encaissement.</div>
-            <div class="hero-meta">
-                <span>📍 Magasin Super U Louvigné</span>
-                <span>⏱️ Temps de lecture : ~15 minutes</span>
-                <span>🎯 6 Modules Procédures + 3 Annexes</span>
-            </div>
-        </div>
-        <div class="qr-card">
-            <a href="https://ewiwlll.github.io/super-u-drive/" target="_blank">
-                <img src="data:image/png;base64,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" alt="QR Code d'accès au Guide Drive Super U">
-            </a>
-            <div class="qr-caption">📱 Scanner Mobile</div>
-            <div class="qr-url">ewiwlll.github.io/super-u-drive</div>
-        </div>
+    <div class="hero-qr">
+      <img src="data:image/png;base64,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" alt="QR Code Guide">
+      <span>📱 Scanner Mobile<br><small style="font-size:0.65rem; color:#64748B;">ewiwlll.github.io/super-u-drive</small></span>
     </div>
+  </div>
 
-    <!-- MAIN BODY CONTENT -->
-    <div id="editableContent">
-        <div class="toc-container" id="sommaire">
-
+  <div class="toc-container" id="sommaire">
 <h2>🧭 TABLE DES MATIÈRES GÉNÉRALE</h2>
-
 <ul>
 <li><a href="#module-1">📦 MODULE 1 : L'ARRIVÉE & L'OUVERTURE DU MATIN (6h00 – 8h00)</a>
   <ul>
-  <li><a href="#sec-1-1">1.1. L'Arrivée, la Badgeuse & les Pauses</a></li>
+  <li><a href="#sec-1-1">1.1. L'Arrivée, la Badgeuse, la Tenue & les Pauses</a></li>
   <li><a href="#sec-1-2">1.2. L'État d'Esprit & Les Relations en Magasin</a></li>
   <li><a href="#sec-1-3">1.3. L'Ouverture du Local Drive & Les Sessions PC</a></li>
   <li><a href="#sec-1-4">1.4. 🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les Commandes</a></li>
@@ -660,24 +479,24 @@ hr {
   <li><a href="#sec-2-1">2.1. L'Impression des Commandes & Le Mode MONO</a></li>
   <li><a href="#sec-2-2">2.2. Le Surlignage Méthodique & Le Tri Chronologique des Commandes</a></li>
   <li><a href="#sec-2-3">2.3. La Configuration Standard : 3 Socles Roulants</a></li>
-  <li><a href="#sec-2-4">2.4. Le Système de la Tour de Bacs & L'Ergonomie de Préparation</a></li>
+  <li><a href="#sec-2-4">2.4. Le Système de la Tour de Bacs & L'Ergonomie de Préparation (Anti-Fatigue)</a></li>
   <li><a href="#sec-2-5">2.5. Les 3 Plaquettes & Le Lancement sur le Mob</a></li>
   </ul>
 </li>
 <li><a href="#module-3">🗺️ MODULE 3 : L'ADRESSAGE EN MAGASIN, LE SCAN & LES FRUITS ET LÉGUMES</a>
   <ul>
   <li><a href="#sec-3-1">3.1. Le Décodage des Adresses en Rayon & Les Diodes Vertes (Pick-to-Light)</a></li>
-  <li><a href="#sec-3-2">3.2. Le Plan d'Implantation des Rayons (G, E, D, B, C)</a></li>
+  <li><a href="#sec-3-2">3.2. Le Plan d'Implantation des Rayons (G, E, D, B, C) & Le Bac Charcuterie</a></li>
   <li><a href="#sec-3-3">3.3. La Procédure de Scan & Le Contrôle des Quantités Multiples</a></li>
-  <li><a href="#sec-3-4">3.4. Le Protocole des Fruits & Légumes (F&L)</a></li>
+  <li><a href="#sec-3-4">3.4. Le Protocole des Fruits & Légumes (F&L) & La Protection des Produits Fragiles</a></li>
   </ul>
 </li>
-<li><a href="#module-4">🧠 MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS & CAS PARTICULIERS)</a>
+<li><a href="#module-4">🧠 MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS & BUGS SYSTÈME)</a>
   <ul>
   <li><a href="#sec-4-1">4.1. La Matrice de Décision : Rupture vs Substitution vs Proposition</a></li>
-  <li><a href="#sec-4-2">4.2. Les 3 Fonctions du Mob & Le Fonctionnement de la Proposition</a></li>
+  <li><a href="#sec-4-2">4.2. Les 3 Fonctions du Mob & Le Fonctionnement Réel de la Proposition</a></li>
   <li><a href="#sec-4-3">4.3. La Repasse & La Gestion des Délais</a></li>
-  <li><a href="#sec-4-4">4.4. Les Anomalies Logiciel : Stock à 0, Adresses Imprécises & Bouton Crayon ✏️</a></li>
+  <li><a href="#sec-4-4">4.4. Les Anomalies Logiciel : Le Bug Fatal "Produit demandé = 0" & Le Bouton Crayon ✏️</a></li>
   <li><a href="#sec-4-5">4.5. L'Emplacement des Produits Promotionnels</a></li>
   </ul>
 </li>
@@ -685,7 +504,7 @@ hr {
   <ul>
   <li><a href="#sec-5-1">5.1. La Clôture de Collecte sur le Mob, Sacs (0,26 €) & Vigilance Système</a></li>
   <li><a href="#sec-5-2">5.2. L'Impression du Bon de Remise & Les Annotations Manuscrites</a></li>
-  <li><a href="#sec-5-3">5.3. Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone Sèche)</a></li>
+  <li><a href="#sec-5-3">5.3. Le Stockage au Local Drive & L'Astuce du Petit Congélateur</a></li>
   <li><a href="#sec-5-3bis">5.3.bis. Le Téléphone Portable du Drive & La Réception des Appels Clients</a></li>
   <li><a href="#sec-5-4">5.4. L'Assemblage et la Remise Client à la Borne</a></li>
   <li><a href="#sec-5-5">5.5. L'Encaissement au Poste Caisse (Propositions, Annulations, Sacs, Bons U)</a></li>
@@ -700,7 +519,7 @@ hr {
   <li><a href="#sec-6-2">6.2. La Procédure de Clôture de Caisse : Prélèvement & Comptage des Rouleaux</a></li>
   <li><a href="#sec-6-3">6.3. La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)</a></li>
   <li><a href="#sec-6-4">6.4. La Sécurisation des Fonds, Pochettes & Dépôt au Coffre</a></li>
-  <li><a href="#sec-6-4bis">6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée</a></li>
+  <li><a href="#sec-6-4bis">6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée (18h30)</a></li>
   <li><a href="#sec-6-5">6.5. Le Contrôle Sanitaire des Équipements Frigorifiques</a></li>
   <li><a href="#sec-6-6">6.6. La Préparation du Service du Lendemain & Clôture Finale</a></li>
   </ul>
@@ -713,953 +532,12 @@ hr {
   </ul>
 </li>
 </ul>
-
 </div>
 
-        <h1 id="module-1">
-📦 MODULE 1 : L'ARRIVÉE &amp; L'OUVERTURE DU MATIN (6h00 – 8h00)
-</h1>
-<div class="workflow-bar"><span class="workflow-step">Arrivée / Badgeuse</span><span class="workflow-arrow">➔</span><span class="workflow-step">Ouverture Rideau &amp; Barrière</span><span class="workflow-arrow">➔</span><span class="workflow-step">Connexion PC &amp; Mob (2 Apps)</span><span class="workflow-arrow">➔</span><span class="workflow-step">LANCEMENT DES ANTICIPATIONS</span><span class="workflow-arrow">➔</span><span class="workflow-step">Distribution Métiers</span></div>
-<hr />
-<h3 id="sec-1-1">
-1.1. L'Arrivée, la Badgeuse &amp; les Pauses
-</h3>
-<ul>
-<li><strong>Horaires de prise de poste :</strong> L’heure de début de
-service dépend de votre planning individuel affiché.</li>
-<li><strong>Tenue &amp; Équipements de Protection Individuelle (EPI)
-:</strong>
-<ul>
-<li>Les <strong>chaussures de sécurité</strong> sont fournies par le
-magasin.</li>
-<li>Les <strong>t-shirts Super U</strong> (ainsi que la polaire ou le
-gilet) sont également fournis.</li>
-</ul></li>
-<li><strong>Enregistrement des heures (Badgeuse) :</strong>
-<ul>
-<li>Badgez à votre arrivée sur la borne prévue à cet effet.</li>
-<li>⚠️ <strong>Délai technique :</strong> Respectez <strong>au moins 1
-minute d’intervalle</strong> entre deux passages de badge pour éviter un
-blocage du système.</li>
-</ul></li>
-<li><strong>Gestion des temps de pause :</strong>
-<ul>
-<li><strong>Calcul du temps de pause :</strong> Le droit de pause est
-calculé sur la base de <strong>3 minutes par heure travaillée</strong>
-(ex : 18 min pour 6h de travail, 21 min pour 7h de travail).</li>
-<li><strong>Enregistrement de la pause :</strong> La pause s’enregistre
-directement sur le <strong>terminal dédié situé dans l’espace pause
-(salle de pause)</strong> du magasin (et non sur le Mob).</li>
-<li>La pause se prend selon le flux d’activité, en coordination avec
-l’équipe du Drive.</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="sec-1-2">
-1.2. L'État d'Esprit &amp; Les Relations en Magasin
-</h3>
-<ol type="1">
-<li><strong>Priorité Client en Magasin :</strong><br />
-Dès 8h30, la clientèle est présente dans les allées. En circulation avec
-le chariot de préparation, <strong>le client est toujours
-prioritaire</strong>. Un accueil courtois (<em>“Bonjour”</em>, <em>“Je
-vous en prie, passez”</em>) garantit une cohabitation sereine.</li>
-<li><strong>Coordination avec les Équipes des Rayons :</strong><br />
-Le matin coïncide avec la mise en rayon des produits frais, épicerie et
-liquides. Veillez à ne pas entraver le positionnement des palettes. La
-bonne entente facilite l’assistance pour la recherche de références
-complémentaires en réserve.</li>
-</ol>
-<hr />
-<h3 id="sec-1-3">
-1.3. L'Ouverture du Local Drive &amp; Les Sessions PC
-</h3>
-<ol type="1">
-<li><strong>Accès au local Drive :</strong>
-<ul>
-<li>Déverrouillez le rideau métallique à l’aide de la clé dédiée.</li>
-<li><strong>Retirez la barrière de sécurité</strong> installée devant
-l’accès.</li>
-</ul></li>
-<li><strong>Mise en route du poste informatique Drive :</strong>
-<ul>
-<li>Allumez l’unité centrale et l’écran.</li>
-<li>Lancez l’application de gestion Drive U.</li>
-<li>Les identifiants de session sont affichés sur le poste de
-travail.</li>
-</ul></li>
-<li><strong>🚨 PROCÉDURE DE CONNEXION SUR LE MOB (DOUBLE APPLICATION
-OBLIGATOIRE) :</strong>
-<ul>
-<li>Munissez-vous d’un terminal portable (<strong>Mob</strong>).</li>
-<li><strong>Deux connexions distinctes doivent obligatoirement être
-effectuées :</strong>
-<ul>
-<li><strong>Application 1 (Collecte &amp; Préparation) :</strong>
-Sélection de votre identifiant (Nom / Prénom) et saisie de votre schéma
-de sécurité pour la préparation des commandes en rayon.</li>
-<li><strong>Application 2 (U Livreur / Gestion des Arrivées Client)
-:</strong> Scannez le code-barres de configuration situé <strong>dans le
-tiroir sous le poste PC Drive</strong>.<br />
-&gt; ⚠️ <em>Important : Sans la connexion à U Livreur, les alertes
-d’arrivée client à la borne ne pourront pas être transmises au
-Mob.</em></li>
-</ul></li>
-</ul></li>
-</ol>
-<hr />
-<h3 id="sec-1-4">
-1.4. 🚨 RÈGLE DE GESTION ABSOLUE : Lancer les Anticipations AVANT les
-Commandes
-</h3>
-<div class="callout callout-danger"><div class="callout-icon">🚨</div><div class="callout-content"><p>⛔ <strong>RÈGLE CRITIQUE D’ORDONNANCEMENT :</strong><br />
-L’impression des commandes ne doit <strong>JAMAIS</strong> être lancée
-avant la génération des Anticipations. Dans le cas contraire,
-<strong>les anticipations sont définitivement écrasées par le
-système</strong>, empêchant les équipes boucherie, charcuterie et
-poissonnerie de recevoir leurs bons de découpe.</p></div></div>
-<pre><code>┌─────────────────────────────────────────────────────────────────────────┐
-│                     CHRONOLOGIE OBLIGATOIRE D&#39;ÉDITION                   │
-├─────────────────────────────────────────────────────────────────────────┤
-│ 1. 🥇 ÉTAPE 1 : Cliquer sur ANTICIPATION ➔ Impression des bons métiers  │
-│ 2. 🥈 ÉTAPE 2 : ENSUITE seulement, lancer l&#39;édition des Commandes Drive │
-└─────────────────────────────────────────────────────────────────────────┘</code></pre>
-<h4 id="définition-des-anticipations">Définition des Anticipations
-:</h4>
-<p>Il s’agit des produits vendus à la coupe ou nécessitant une
-préparation par les artisans des rayons traditionnels : - 🥩
-<strong>Boucherie</strong> : Rôtis ficelés, viandes hachées à la
-demande, pièces bouchères. - 🐟 <strong>Poissonnerie</strong> : Filets
-désarêtés, poissons vidés, crevettes et crustacés au poids. - 🥓
-<strong>Charcuterie / Traiteur</strong> : Produits à la coupe, salades
-traiteur au grammage. - 🥖 <strong>Boulangerie</strong> : Pains
-spécifiques nécessitant un tranchage ou une cuisson dédiée.</p>
-<hr />
-<h3 id="sec-1-5">
-1.5. Le Tri &amp; la Distribution des Anticipations aux Métiers
-</h3>
-<p>Dès l’édition des documents :</p>
-<ol type="1">
-<li><strong>Identification des barquettes en libre-service (“Prix
-Ronds”) :</strong>
-<ul>
-<li>⚠️ <strong>NE PAS TRANSMETTRE AUX STANDS :</strong> Les feuilles
-mentionnant des montants forfaitaires fixes (ex: <em>1 barquette à 2,00
-€</em> ou <em>chiffonnade à 3,00 €</em>).</li>
-<li>Ces références correspondent à des produits conditionnés en
-libre-service, collectés directement par le préparateur en rayon lors de
-sa tournée.</li>
-</ul></li>
-<li><strong>Distribution optimisée :</strong>
-<ul>
-<li>Afin d’éviter un déplacement superflu, emportez les bons
-d’anticipation sur votre chariot lors de votre première tournée de
-collecte et déposez-les aux 4 stands (Boucherie, Charcuterie,
-Poissonnerie, Boulangerie).</li>
-</ul></li>
-</ol>
-<hr />
-<h1 id="module-2">
-🛒 MODULE 2 : LA PRÉPARATION MATÉRIELLE &amp; L'ORGANISATION DU CHARIOT
-</h1>
-<div class="workflow-bar"><span class="workflow-step">Impression MONO</span><span class="workflow-arrow">➔</span><span class="workflow-step">Surlignage Méthodique &amp; Tri Chronologique</span><span class="workflow-arrow">➔</span><span class="workflow-step">Chariot 3 Socles + Tour de Bacs</span><span class="workflow-arrow">➔</span><span class="workflow-step">3 Plaquettes Prêtes</span></div>
-<hr />
-<h3 id="sec-2-1">
-2.1. L'Impression des Commandes &amp; Le Mode MONO
-</h3>
-<p>Une fois les anticipations distribuées, lancez l’impression des
-commandes du jour :</p>
-<ol type="1">
-<li>Sélectionnez la date courante sur le logiciel de gestion.</li>
-<li>⚠️ <strong>Sélectionnez impérativement le mode “MONO”</strong>
-<em>(traitement d’une commande complète par un préparateur unique)</em>.
-Ne sélectionnez pas le mode “Ramasse”.</li>
-<li><strong>Paramétrage d’impression :</strong> Format
-<strong>RECTO-SIMPLE</strong> obligatoire (chaque commande comprend
-<strong>3 fiches A4 distinctes</strong> : Zone Sèche, Zone Frais, Zone
-Surgelé).</li>
-<li>🖨️ <strong>Maintenance premier niveau :</strong> En cas d’incident
-d’entraînement papier, ouvrez la face avant de l’imprimante,
-repositionnez la ramette et refermez le capot.</li>
-</ol>
-<hr />
-<h3 id="sec-2-2">
-2.2. Le Surlignage Méthodique &amp; Le Tri Chronologique des Commandes
-</h3>
-<p>À la sortie de l’imprimante, munissez-vous d’un surligneur.</p>
-<h4 id="les-3-mentions-à-mettre-en-évidence-immédiatement">Les 3
-mentions à mettre en évidence immédiatement :</h4>
-<ol type="1">
-<li>🚚 <strong><code>Liv Shopopop</code></strong> (en-tête de document)
-: Livraison collaborative ➔ <strong>Règle : Conditionnement exclusif en
-sacs Kraft papier</strong> (aucun sac consigné réutilisable).</li>
-<li>💬 <strong>Commentaires Clients</strong> (bas de document) :
-Exemples : <em>“Bananes peu mûres”</em>, <em>“DLC la plus
-éloignée”</em>, <em>“Présence de marches à l’entrée”</em>.</li>
-<li>❄️ <strong>Zone Surgelé</strong> : Vérification visuelle pour
-sécuriser le retrait du produit au congélateur lors du départ.</li>
-</ol>
-<h4 id="méthode-de-classement-chronologique">🔄 Méthode de classement
-chronologique :</h4>
-<ul>
-<li>L’imprimante génère les documents par ordre décroissant (commandes
-tardives en tête de pile).</li>
-<li><strong>Procédure :</strong> Déposez chaque feuille traitée face
-cachée sur le plan de travail en empilant les suivantes.</li>
-<li>Une fois la liasse terminée, retournez le bloc complet : 🎯
-<strong>L’ensemble des commandes se trouve parfaitement ordonné de 8h30
-à 19h00.</strong></li>
-</ul>
-<hr />
-<h3 id="sec-2-3">
-2.3. La Configuration Standard : 3 Socles Roulants
-</h3>
-<p>L’assemblage d’un chariot de préparation repose sur l’association de
-<strong>3 socles roulants emboîtés</strong> :</p>
-<pre><code>┌───────────────────────────┬───────────────────────────┬───────────────────────────┐
-│     SOCLE 1 : SURGELÉ     │       SOCLE 2 : SEC       │      SOCLE 3 : FRAIS      │
-├───────────────────────────┼───────────────────────────┼───────────────────────────┤
-│ • 1 Bac Surgelé au fond   │ • 1 Bac Sec standard      │ • 1 Bac Frais standard    │
-│ • + Réserve de bacs vides │ • Produits d&#39;épicerie,    │ • Produits laitiers,      │
-│   empilés en hauteur      │   boissons, droguerie     │   viandes, crémerie       │
-└───────────────────────────┴───────────────────────────┴───────────────────────────┘</code></pre>
-<hr />
-<h3 id="sec-2-4">
-2.4. Le Système de la Tour de Bacs &amp; L'Ergonomie de Préparation
-</h3>
-<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>💡 <strong>Recommandation Ergonomique :</strong><br />
-La réduction des flexions lombaires répétées préserve la condition
-physique et améliore la cadence de collecte.</p></div></div>
-<h4 id="protocole-de-travail-à-hauteur-de-buste">Protocole de travail à
-hauteur de buste :</h4>
-<ol type="1">
-<li>Sur le <strong>Socle 1 (Surgelé)</strong>, empilez <strong>3 à 4
-bacs vides</strong>.</li>
-<li>Positionnez un sac de collecte <strong>sur le bac
-supérieur</strong>, à hauteur de taille.</li>
-<li>Lors du passage en rayon Épicerie / Bazar, déposez les petits
-articles directement dans ce sac supérieur sans vous pencher.</li>
-<li>Une fois le sac complété, déposez-le d’un geste fluide dans le Bac
-Sec situé en partie inférieure.</li>
-<li>🎯 <strong>Bénéfice : Confort de travail renforcé et optimisation du
-temps de tournée.</strong></li>
-</ol>
-<hr />
-<h3 id="sec-2-5">
-2.5. Les 3 Plaquettes &amp; Le Lancement sur le Mob
-</h3>
-<ol type="1">
-<li>Munissez-vous des 3 fiches de commande (Sec, Frais, Surgelé).</li>
-<li>Insérez chaque fiche dans la <strong>plaquette transparente à
-pince</strong> positionnée sur chaque bac.</li>
-<li>Sur votre Mob : Menu <strong>Nouvelle Commande</strong> ➔
-<strong>Collecte</strong>.</li>
-<li>⚡ <strong>Ouverture rapide :</strong> Scannez directement le QR
-code de la feuille de commande avec le lecteur laser du Mob pour ouvrir
-la mission sans recherche manuelle.</li>
-</ol>
-<hr />
-<h1 id="module-3">
-🗺️ MODULE 3 : L'ADRESSAGE EN MAGASIN, LE SCAN &amp; LES FRUITS ET
-LÉGUMES
-</h1>
-<div class="workflow-bar"><span class="workflow-step">Lecture Adresse : G16 03</span><span class="workflow-arrow">➔</span><span class="workflow-step">Repérage Diode Verte</span><span class="workflow-arrow">➔</span><span class="workflow-step">Scan Laser Droit</span><span class="workflow-arrow">➔</span><span class="workflow-step">Collecte Groupée F&amp;L</span></div>
-<hr />
-<h3 id="sec-3-1">
-3.1. Le Décodage des Adresses en Rayon &amp; Les Diodes Vertes
-(Pick-to-Light)
-</h3>
-<p>Sur l’écran du Mob, chaque référence présente une désignation, un
-visuel et une <strong>adresse d’implantation</strong> (ex:
-<code>G16 03</code>).</p>
-<pre><code>┌───────────────┬───────────────────────────────┬───────────────────────────────┐
-│  SECTEUR : G  │         ALLÉE : 16            │         TRAVÉE : 03           │
-├───────────────┼───────────────────────────────┼───────────────────────────────┤
-│ Famille de    │ Numéro de la rangée en magasin│ Emplacement dans l&#39;allée      │
-│ produit (ex:  │ (numérotation de 01 à 23)     │ (01 = tête d&#39;allée /          │
-│ G = Boissons) │                               │ indices élevés = fond d&#39;allée)│
-└───────────────┴───────────────────────────────┴───────────────────────────────┘</code></pre>
-<h4 id="système-de-guidage-lumineux-pick-to-light">🟢 Système de guidage
-lumineux (Pick-to-Light) :</h4>
-<p>À la sélection d’un produit sur le Mob, la diode de l’étiquette
-électronique clignote en <strong>vert</strong> en rayon. - 🔄
-<strong>Réactivation :</strong> Si la diode s’éteint après mise en
-veille, sélectionnez l’article adjacent puis revenez sur la référence
-pour relancer le signal lumineux.</p>
-<hr />
-<h3 id="sec-3-2">
-3.2. Le Plan d'Implantation des Rayons (G, E, D, B, C)
-</h3>
-<pre><code>ORGANISATION DU MAGASIN SUPER U LOUVIGNÉ :
-[Accueil / Promos Frais] ➔ [G : Boissons / Bazar] ➔ [E : Animalerie / Lait / Entretien] ➔ [D : Épicerie] ➔ [B : Frais / F&amp;L / Surgelés] ➔ [C : Produits Marée / Traiteur / Boulangerie]</code></pre>
-<ul>
-<li><strong>Secteur G (G16 à G01) :</strong> Boissons et liquides (G16 à
-G08), Début Bazar / Saisonnier (G07), Fin Bazar (G06 à G01).</li>
-<li><strong>Secteur E (E23 à E01) :</strong>
-<ul>
-<li><strong>Côté Gauche (E23 à E11) :</strong> E23 = Animalerie, E11 =
-Rayon Lait.</li>
-<li><strong>Côté Droit (E09 à E01) :</strong> Univers Maison &amp;
-Droguerie.</li>
-</ul></li>
-<li><strong>Secteur D (Épicerie D12 à D01) :</strong>
-<ul>
-<li>D10 correspond à l’entrée du secteur Frais.</li>
-<li>D05 et D06 se situent au niveau de la poutre centrale bleue.</li>
-<li><em>Orientation :</em> Indice fort (D12 09) en allée centrale,
-indice faible (D12 01) en fond de linéaire.</li>
-</ul></li>
-<li><strong>Secteur B (Frais, F&amp;L, Crémerie, Surgelés) :</strong>
-<ul>
-<li><code>B12 à B06</code> : Charcuterie libre-service et Fromage
-(jusqu’à B06).</li>
-<li><code>Fruits &amp; Légumes</code> : Espace central faisant suite à
-la zone B06.</li>
-<li><code>B02 à B01</code> : Desserts lactés et yaourts.</li>
-<li><code>B05 à B03</code> : Meubles Surgelés (B05 face au linéaire
-B06).</li>
-</ul></li>
-<li><strong>Secteur C (Rayons Traditionnels &amp; Panification)
-:</strong>
-<ul>
-<li><code>C01</code> : Meuble d’appoint Marée.</li>
-<li><code>Espace Charcuterie Centrale</code> : Bac de chiffonades
-conditionnées.</li>
-<li><code>C02</code> : Produits de la mer emballés (fumaisons,
-surimi).</li>
-<li><code>C05</code> : Linéaire Panification / Brioches (collecté en fin
-de tournée).</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="sec-3-3">
-3.3. La Procédure de Scan &amp; Le Contrôle des Quantités Multiples
-</h3>
-<ul>
-<li><strong>Déclenchement du lecteur :</strong> Bouton laser situé sur
-la <strong>tranche latérale droite du Mob</strong>.</li>
-<li><strong>Signal sonore :</strong> Bip aigu = Validation / Tonalité
-grave = Erreur de référence.</li>
-<li>⚠️ <strong>CONTRÔLE DES QUANTITÉS MULTIPLES (ex: 6 unités de lait)
-:</strong>
-<ul>
-<li>Lors d’une saisie manuelle de quantité (ex: touche <code>6</code>)
-au lieu d’un scan unitaire : <strong>dénombrez impérativement à voix
-haute chaque unité déposée dans le sac (1, 2, 3, 4, 5, 6)</strong>.</li>
-<li>Tout écart physique engendre une facturation erronée pour le
-client.</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="sec-3-4">
-3.4. Le Protocole des Fruits &amp; Légumes (F&amp;L)
-</h3>
-<p>Le secteur F&amp;L combine des articles <strong>À l’unité</strong>
-(avocats, barquettes préemballées) et des articles <strong>Au poids /
-Vrac</strong> (pommes, agrumes).</p>
-<div class="workflow-bar"><span class="workflow-step">Regroupement dans 1 sac</span><span class="workflow-arrow">➔</span><span class="workflow-step">Pesée globale à la balance</span><span class="workflow-arrow">➔</span><span class="workflow-step">Validation Mob / Ajout de portion</span><span class="workflow-arrow">➔</span><span class="workflow-step">Répartition Sec vs Frais</span></div>
-<h4 id="procédure-de-pesée-groupée">Procédure de pesée groupée :</h4>
-<ol type="1">
-<li>Rassemblez l’ensemble des références F&amp;L de la commande dans un
-sac de collecte.</li>
-<li>Rejoignez la balance pour effectuer l’ensemble des pesées en une
-séquence unique.</li>
-<li><em>Opérations balance :</em> Déposez le sachet ➔ Confirmez la tare
-➔ Choisissez <em>Fruits</em> ou <em>Légumes</em> ➔ Sélectionnez la
-référence ➔ Apposez l’étiquette code-barres à plat.</li>
-<li><em>Validation sur le Mob :</em>
-<ul>
-<li>Poids conforme ➔ <strong>Valider</strong>.</li>
-<li>Léger écart supérieur ➔ <strong>Forcer</strong>.</li>
-<li>Poids inférieur (ex: conditionnement en deux poches) ➔ Sélectionnez
-<strong>Ajouter une portion</strong> sur le Mob ➔ Scannez la seconde
-étiquette ➔ <strong>Valider</strong>.</li>
-</ul></li>
-<li><strong>Règles de tri thermique :</strong>
-<ul>
-<li>🥔 <strong>Zone Sèche :</strong> Pommes de terre, oignons, ail,
-échalotes, ainsi que les <strong>BANANES</strong> (altération thermique
-en froid positif).</li>
-<li>🥗 <strong>Zone Frais :</strong> L’ensemble des autres fruits et
-légumes.</li>
-</ul></li>
-<li>🍌 <strong>Substitution Vrac vs Pièce :</strong> En cas
-d’indisponibilité d’un format (ex: bananes au poids), déclarez la
-référence en Rupture et procédez à un <strong>Ajout</strong> de la
-référence équivalente pour un montant identique.</li>
-</ol>
-<hr />
-<h1 id="module-4">
-🧠 MODULE 4 : LA GESTION DES IMPRÉVUS (PRODUITS MANQUANTS &amp; CAS
-PARTICULIERS)
-</h1>
-<pre><code>                  ┌─────────────────────────────────────────────────────────┐
-                  │                 RÉFÉRENCE INDISPONIBLE                  │
-                  └────────────────────────────┬────────────────────────────┘
-                                               │
-                       ┌────────────────────────┴────────────────────────┐
-                       ▼                                                 ▼
-        [PRODUIT DE SUBSTITUTION VALABLE]                   [PRODUIT DIFFÉRENT / INCERTAIN]
-        (Même typologie / Format équivalent)                (Autre marque / Saveur distincte)
-                       │                                                 │
-                       ▼                                                 ▼
-              🏷️ LA SUBSTITUTION                                🎁 LA PROPOSITION
-         • Validée sur le Mob (&quot;Substituer&quot;)               • Déclarée en &quot;Rupture&quot; sur le Mob
-         • Intégrée et facturée dans la commande           • Article posé hors du sac au local
-         • Déposée directement dans le sac                 • Soumise à l&#39;accord du client à l&#39;accueil</code></pre>
-<hr />
-<h3 id="sec-4-1">
-4.1. La Matrice de Décision : Rupture vs Substitution vs Proposition
-</h3>
-<table>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Cas de figure</th>
-<th style="text-align: left;">Traitement informatique sur le Mob</th>
-<th style="text-align: left;">Facturation client</th>
-<th style="text-align: left;">Emplacement physique</th>
-<th style="text-align: left;">Consigne métier</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>Produit équivalent
-disponible</strong> (même marque, format proche)</td>
-<td style="text-align: left;">Sélection
-<strong>Substitution</strong></td>
-<td style="text-align: left;"><strong>Oui</strong> (Mise à jour
-automatique)</td>
-<td style="text-align: left;"><strong>Dans le sac de
-commande</strong></td>
-<td style="text-align: left;">Ajuster la quantité pour garantir le
-volume initial.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Produit de remplacement avec
-doute</strong> (marque tierce, goût différent)</td>
-<td style="text-align: left;">Sélection <strong>Rupture</strong></td>
-<td style="text-align: left;"><strong>Non</strong> (0 € facturé)</td>
-<td style="text-align: left;"><strong>Au-dessus du bac (hors
-sac)</strong></td>
-<td style="text-align: left;">Mentionner “PROPO” sur le bon de remise et
-proposer au client à son arrivée.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>Aucune référence
-disponible</strong></td>
-<td style="text-align: left;">Sélection <strong>Rupture</strong></td>
-<td style="text-align: left;"><strong>Non</strong> (0 € facturé)</td>
-<td style="text-align: left;">Aucun</td>
-<td style="text-align: left;">Déclaration de rupture nette.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="sec-4-2">
-4.2. Les 3 Fonctions du Mob &amp; Le Fonctionnement de la Proposition
-</h3>
-<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>⚠️ <strong>Précision Technique :</strong><br />
-Le terminal Mob propose 3 actions : <strong>Repasse</strong>,
-<strong>Substitution</strong>, <strong>Rupture</strong>.<br />
-Il n’existe pas d’action nommée “Proposition” sur le Mob. La mise en
-place d’une proposition consiste à <strong>valider la Rupture sur le
-terminal</strong> et à <strong>prendre physiquement l’article alternatif
-pour le positionner au sommet du bac</strong>.</p></div></div>
-<hr />
-<h3 id="sec-4-3">
-4.3. La Repasse &amp; La Gestion des Délais
-</h3>
-<ul>
-<li><strong>Définition :</strong> L’option “Repasse” met l’article en
-attente (la commande prend le statut <strong>BLEU</strong> sur le
-logiciel PC) en vue d’un passage ultérieur.</li>
-<li>🚨 <strong>RÈGLE DE DÉLAI :</strong>
-<ul>
-<li><strong>Avance sur le planning (&gt; 1h30) :</strong> Repasse
-autorisée pour les rayons en cours d’approvisionnement matinal.</li>
-<li><strong>Délai serré (&lt; 45 min avant retrait) :</strong> ⛔
-<strong>Aucune repasse.</strong> Décision immédiate entre Substitution
-directe, Proposition ou Rupture.</li>
-</ul></li>
-</ul>
-<hr />
-<h3 id="sec-4-4">
-4.4. Les Anomalies Logiciel : Stock à 0, Adresses Imprécises &amp;
-Bouton Crayon ✏️
-</h3>
-<ol type="1">
-<li><strong>Références en anomalie de stock (Stock théorique nul mais
-commandable) :</strong> Procédez directement à une substitution ou
-proposition sans recherche prolongée en réserve.</li>
-<li><strong>Mise à jour d’adresse (Icône Crayon ✏️) :</strong>
-Lorsqu’une référence ne comporte pas de localisation précise,
-sélectionnez l’icône <strong>Crayon ✏️</strong> sur le Mob après avoir
-trouvé le produit, puis scannez le QR code de la réglette pour
-enregistrer son emplacement.</li>
-<li><strong>Identification visuelle complémentaire :</strong> En cas
-d’absence de photo sur le Mob, une recherche rapide sur smartphone
-permet de visualiser le conditionnement du produit.</li>
-</ol>
-<hr />
-<h3 id="sec-4-5">
-4.5. L'Emplacement des Produits Promotionnels
-</h3>
-<pre><code>┌─────────────────────────────────────────────────────────────────────────┐
-│                 ZONES D&#39;IMPLANTATION DES PROMOTIONS                     │
-├─────────────────────────────────────────────────────────────────────────┤
-│ 1. 🥛 ENTRÉE DU MAGASIN : Bacs réfrigérés promotionnels (Ultra-frais)   │
-│ 2. 🌟 ALLÉE CENTRALE : Offres volumineuses Épicerie et Boissons         │
-│ 3. 🎯 TÊTES DE GONDOLE (TG) : Extrémités de chaque linéaire             │
-│ 4. 📦 FOND DE RAYON HABITUEL : Signalétique jaune de promotion          │
-└─────────────────────────────────────────────────────────────────────────┘</code></pre>
-<hr />
-<h1 id="module-5">
-🚗 MODULE 5 : LE RETOUR AU LOCAL, LA LIVRAISON &amp; LES ENCAISSEMENTS
-</h1>
-<div class="workflow-bar"><span class="workflow-step">Saisie des Sacs 0,26 €</span><span class="workflow-arrow">➔</span><span class="workflow-step">Édition Bon de Remise &amp; Annotations</span><span class="workflow-arrow">➔</span><span class="workflow-step">Rangement Frigo/Congélo/Sec</span><span class="workflow-arrow">➔</span><span class="workflow-step">Prise en charge Borne</span><span class="workflow-arrow">➔</span><span class="workflow-step">Règlement au Poste PC</span></div>
-<hr />
-<h3 id="sec-5-1">
-5.1. La Clôture de Collecte sur le Mob, Sacs (0,26 €) &amp; Vigilance
-Système
-</h3>
-<ol type="1">
-<li>En fin de tournée, le Mob présente l’écran récapitulatif.
-Sélectionnez <strong>Voir les écarts</strong>.</li>
-<li><strong>Enregistrement des sacs de conditionnement (0,26 €)
-:</strong>
-<ul>
-<li>Sélectionnez <strong>Visualiser les ajouts</strong>.</li>
-<li>Scannez le code-barres “Sacs” fixé <strong>sur la poignée du
-chariot</strong>.</li>
-<li>Saisissez le nombre total de sacs utilisés (Sec + Frais +
-Surgelé).</li>
-</ul></li>
-<li>⚠️ <strong>Vigilance anomalie logicielle :</strong><br />
-Lors d’une substitution, si le Mob indique une quantité demandée égale à
-0, une saisie de quantité non nulle bloque la validation et impose une
-réinitialisation de la commande au poste PC. Annulez toute substitution
-comportant une quantité demandée à 0 avant clôture.</li>
-</ol>
-<hr />
-<h3 id="sec-5-2">
-5.2. L'Impression du Bon de Remise &amp; Les Annotations Manuscrites
-</h3>
-<ol type="1">
-<li>Sur le PC, la commande bascule au statut <strong>VIOLET
-(Préparé)</strong>.</li>
-<li>Sélectionnez <strong>Bon de remise</strong> ➔ Lancez l’édition en
-<strong>RECTO-VERSO</strong> (traitement commande par commande).</li>
-<li><strong>Annotations au stylo sur le document :</strong>
-<ul>
-<li>Entourez les <strong>Ruptures</strong>.</li>
-<li>Inscrivez <strong>“PROPO”</strong> face aux références faisant
-l’objet d’un produit de remplacement déposé sur le bac.</li>
-<li>Mettez en avant les <strong>Substitutions</strong> et les
-<strong>Écarts significatifs de grammage</strong>.</li>
-</ul></li>
-<li>La commande bascule au statut <strong>VERT (Terminé)</strong> sur le
-planning.</li>
-</ol>
-<hr />
-<h3 id="sec-5-3">
-5.3. Le Stockage au Local Drive (Chambre Froide, Congélateurs, Zone
-Sèche)
-</h3>
-<ul>
-<li>🥖 <strong>Zone Sèche :</strong> Bacs rangés sur étagères ou socles
-mobiles avec la fiche Sec.</li>
-<li>🥩 <strong>Zone Frais :</strong> Bacs transférés immédiatement en
-<strong>Chambre Froide Drive</strong> avec la fiche Frais.</li>
-<li>🍦 <strong>Zone Surgelé :</strong> Produits extraits du bac et
-placés <strong>dans les conservateurs négatifs</strong> :
-<ul>
-<li><em>Sacs multiples</em> ➔ <strong>Grand Congélateur</strong> (fiches
-d’identification fixées sur les sacs).</li>
-<li><em>Article unitaire</em> ➔ <strong>Petit Congélateur</strong>
-(étiquette apposée sur l’article).</li>
-</ul></li>
-<li>🎁 <strong>Propositions :</strong> Déposées sur le bac Sec de
-manière bien visible.</li>
-</ul>
-<hr />
-<h3 id="sec-5-3bis">
-📞 5.3.bis. Le Téléphone Portable du Drive &amp; La Réception des Appels
-Clients
-</h3>
-<p>Le local Drive dispose d’un <strong>téléphone portable
-professionnel</strong> destiné aux communications avec les clients : -
-Lorsque le combiné sonne pendant une tournée de collecte :
-<strong>interrompez temporairement la préparation pour
-répondre</strong>. - <em>Motifs récurrents :</em> Décalage d’horaire de
-retrait, modification d’immatriculation, demande de complément de
-commande. - <strong>Protocole :</strong> Notez l’information et
-reportez-la au retour sur le <strong>Bon de remise</strong> de la
-commande pour informer l’équipe.</p>
-<hr />
-<h3 id="sec-5-4">
-5.4. L'Assemblage et la Remise Client à la Borne
-</h3>
-<ol type="1">
-<li>À la sonnerie d’alerte sur le Mob, sélectionnez <strong>“Je prends
-en charge”</strong>.</li>
-<li>Notez le <strong>Nom du client</strong>, le <strong>Numéro de borne
-(1, 2 ou 3)</strong> et le <strong>Code de commande</strong> (ex:
-<code>MNF 16</code>).</li>
-<li><strong>Protocole de rassemblement rapide :</strong> Récupérez le
-bac Sec ➔ Intégrez les sacs de la Chambre Froide ➔ Prélevez les articles
-du Congélateur ➔ Vérifiez les articles en Proposition.</li>
-<li>Rendez-vous sur la piste Drive auprès du véhicule du client.</li>
-</ol>
-<hr />
-<h3 id="sec-5-5">
-5.5. L'Encaissement au Poste Caisse (Propositions, Annulations, Sacs,
-Bons U)
-</h3>
-<ol type="1">
-<li>Récupérez le Bon de remise dans le bac.</li>
-<li>Déverrouillez le logiciel à l’aide du code caisse, puis
-<strong>scannez le code-barres supérieur du Bon de remise</strong>.</li>
-<li><strong>Propositions validées :</strong> Scannez le produit de
-remplacement à l’aide de la douchette pour l’ajouter à la
-transaction.</li>
-<li><strong>Substitutions refusées :</strong><br />
-Relevez les <strong>3 derniers chiffres du code-barres</strong> sur
-l’article ➔ Retrouvez la ligne correspondante à l’écran ➔ Cliquez sur
-<strong>Annuler</strong>.</li>
-<li><strong>Reprise des sacs réutilisables rapportés :</strong><br />
-Cliquez sur <strong>Quantité</strong> ➔ Tapez le nombre de sacs (ex:
-<code>4</code>) ➔ Sélectionnez <strong>Raccourci Article</strong> ➔
-<strong>Drive</strong> ➔ <strong>Retour Sac Drive</strong> (déduction de
-1,04 €).</li>
-<li><strong>Bons de réduction et Bons d’achat U :</strong><br />
-Cliquez sur <strong>TOTAL</strong>, puis <strong>scannez les bons papier
-APRÈS l’appui sur Total</strong>. Déposez les coupons dans le
-tiroir-caisse.</li>
-</ol>
-<hr />
-<h3 id="sec-5-6">
-5.6. Les Modes de Paiement (CB, Espèces, Chèques, Comptes Pros &amp;
-Aubépine)
-</h3>
-<ul>
-<li>💳 <strong>Carte Bancaire :</strong> Cliquez sur
-<code>Cartes →</code> puis <code>Carte</code> ➔ Règlement sur le
-terminal TPE.</li>
-<li>💵 <strong>Espèces :</strong> Cliquez sur <code>Espèces →</code> ➔
-Saisissez le montant remis ➔ Le système indique le rendu monnaie ➔ Dépôt
-dans le tiroir.</li>
-<li>✍️ <strong>Chèques bancaires :</strong> Cliquez sur
-<code>Chèque →</code> ➔ Traitement par la machine d’oblitération ➔
-<strong>Contrôle obligatoire de la signature</strong>.</li>
-<li>🏢 <strong>Comptes Professionnels &amp; Entreprises (Paiement
-Différé) :</strong><br />
-Présentez la <strong>Carte Entreprise</strong> ➔ Scannez les <strong>2
-codes-barres</strong> ➔ <strong>Total</strong> ➔ <strong>Client</strong>
-➔ <strong>Paiement Différé</strong> ➔ <strong>FAIRE SIGNER LE TICKET DE
-CAISSE PAR LE CLIENT</strong>.</li>
-<li>🌿 <strong>Commandes Épicerie Aubépine :</strong><br />
-Conditionnement <strong>SANS SAC DANS LES BACS</strong> ➔ Bordereau
-spécifique établi par la responsable ➔ Aucun encaissement au guichet
-(gestion centralisée).</li>
-</ul>
-<hr />
-<h3 id="sec-5-7">
-5.7. Les Commandes Réglées en Ligne (E-commerce, Max Autorisé, Euros
-Carte U, Duplicata &amp; Archivage)
-</h3>
-<ol type="1">
-<li><strong>Contrôle du “Max Paiement en Ligne” :</strong><br />
-Vérifiez que le montant final ne dépasse pas le plafond d’autorisation
-indiqué sur le document.<br />
-<em>En cas de dépassement :</em> Menu <strong>E-commerce</strong> ➔
-<strong>Paiement en ligne</strong> ➔ Saisie du plafond autorisé ➔
-Règlement du reliquat par CB ou espèces.</li>
-<li><strong>Utilisation des Euros Carte U (Cagnotte) :</strong><br />
-Étape 1 : <strong>E-commerce</strong> ➔ <strong>Paiement en ligne Euros
-Carte U</strong> (saisie du montant) ➔ Étape 2 :
-<strong>E-commerce</strong> ➔ <strong>Paiement en ligne</strong>
-(solde).</li>
-<li><strong>Édition des justificatifs :</strong><br />
-Générez le ticket de caisse interne. À la demande du client :
-<strong>Divers</strong> ➔ <strong>Duplicata du dernier
-ticket</strong>.</li>
-<li>📎 <strong>Classement des pièces justificatives :</strong><br />
-Agrafez le ticket au Bon de remise et classez le document dans le bac
-d’archivage :
-<ul>
-<li>⬅️ <strong>Section Gauche :</strong> Règlements sur place (CB,
-Espèces, Chèques, Différés pros).</li>
-<li>➡️ <strong>Section Droite :</strong> Règlements en Ligne (avec
-ticket de caisse agrafé).</li>
-</ul></li>
-</ol>
-<hr />
-<h3 id="sec-5-8">
-5.8. La Distribution des Bouteilles de Gaz (Sécurité, Procédure
-d'Échange &amp; Facturation)
-</h3>
-<ol type="1">
-<li><strong>Consignes d’accès :</strong> Munissez-vous du trousseau de
-clés gaz et positionnez la porte automatique en <strong>mode Ouverture
-Permanente</strong>.</li>
-<li><strong>Identification des bouteilles :</strong> Enveloppe bleue =
-Gaz Butane / Autre coloris = Gaz Propane.</li>
-<li><strong>Protocole de stockage :</strong> Déposez la
-<strong>bouteille vide au fond du box de stockage</strong> (position
-inversée). Remettez la bouteille pleine au client. Verrouillez le
-box.</li>
-<li><strong>Enregistrement en caisse :</strong> Scannez le code-barres
-du type de bouteille sur le classeur de référence. Faites valider le
-tarif par le client.</li>
-<li><strong>Sécurisation :</strong> Repositionnez la porte d’accès en
-<strong>mode Sens Interdit</strong>.</li>
-</ol>
-<hr />
-<h1 id="module-6">
-🌙 MODULE 6 : LA FERMETURE DU SOIR &amp; LA CLÔTURE DE CAISSE (19h20 –
-19h45)
-</h1>
-<div class="workflow-bar"><span class="workflow-step">19h30 Fermeture Accès</span><span class="workflow-arrow">➔</span><span class="workflow-step">DÉCONNEXION U LIVREUR</span><span class="workflow-arrow">➔</span><span class="workflow-step">Prélèvement Espèces</span><span class="workflow-arrow">➔</span><span class="workflow-step">Pochette Rouge</span><span class="workflow-arrow">➔</span><span class="workflow-step">Comptage Caisse</span><span class="workflow-arrow">➔</span><span class="workflow-step">Dépôt Coffre</span><span class="workflow-arrow">➔</span><span class="workflow-step">Contrôle Frigos</span><span class="workflow-arrow">➔</span><span class="workflow-step">Préparation Lendemain</span><span class="workflow-arrow">➔</span><span class="workflow-step">Badgeuse</span></div>
-<hr />
-<h3 id="sec-6-1">
-6.1. Les Horaires de Clôture &amp; La Déconnexion Obligatoire de U
-Livreur
-</h3>
-<ul>
-<li><strong>Horaires de fin de service :</strong> Fermeture du service à
-<strong>19h30</strong> (lundi à vendredi) et <strong>18h30</strong>
-(samedi). Lancement des opérations de clôture à 19h20 dès départ du
-dernier client.</li>
-<li>🔴 <strong>PROCÉDURE PRIORITAIRE : Déconnexion de l’application U
-LIVREUR sur le Mob !</strong><br />
-Ouvrez U Livreur ➔ Sélectionnez vos initiales ➔
-<strong>Déconnexion</strong>.<br />
-<em>(Cette action interrompt les notifications sonores sur le matériel
-après votre service).</em></li>
-</ul>
-<hr />
-<h3 id="sec-6-2">
-6.2. La Procédure de Clôture de Caisse : Prélèvement &amp; Comptage des
-Rouleaux
-</h3>
-<ol type="1">
-<li><strong>Prélèvement des coupures principales :</strong><br />
-Menu <strong>Divers</strong> ➔ <strong>Gestion de tiroir</strong> ➔
-<strong>Prélèvements</strong> ➔ Isolez les coupures de 50 € et 20 €
-excédentaires ➔ Insérez-les avec le justificatif dans la
-<strong>pochette rouge</strong>.</li>
-<li><strong>Comptage des valeurs :</strong><br />
-Menu <strong>Gestion de tiroir</strong> ➔ <strong>Comptes fonds de
-caisse</strong>.</li>
-</ol>
-<div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><p>🪙 <strong>RÈGLE DE SAISIE DE LA MONNAIE :</strong> - <strong>Rouleau
-complet (Fermé / Neuf) :</strong> Saisie dans la colonne
-<strong>“Rouleaux”</strong> (ex: 2 rouleaux entiers de 1 € = saisir
-<code>2</code>). - <strong>Rouleau entamé (Ouvert / Partiel) :</strong>
-<strong>NE PAS SAISIR EN ROULEAU.</strong> Dénombrez les pièces
-individuelles et ajoutez-les aux espèces en vrac dans la colonne
-<strong>“Quantité”</strong>.</p></div></div>
-<ol start="3" type="1">
-<li>Comptez les liasses de billets (5 €, 10 €, 20 €) et confirmez la
-saisie.</li>
-</ol>
-<hr />
-<h3 id="sec-6-3">
-6.3. La Gestion des Écarts de Caisse (Assistance Accueil - Poste 1)
-</h3>
-<ol type="1">
-<li>Après validation des montants, cliquez sur <strong>Accepter</strong>
-➔ <strong>Sauvegarder</strong>.</li>
-<li>🚨 <strong>En cas d’anomalie ou d’écart détecté par le système
-:</strong>
-<ul>
-<li>Procédez à un second comptage méthodique de votre monnaie et de vos
-billets.</li>
-<li>Si l’écart persiste : <strong>composez le 1 sur le téléphone fixe
-interne (Accueil)</strong> pour solliciter l’intervention d’un
-responsable.</li>
-</ul></li>
-</ol>
-<hr />
-<h3 id="sec-6-4">
-6.4. La Sécurisation des Fonds, Pochettes &amp; Dépôt au Coffre
-</h3>
-<ol type="1">
-<li><strong>Organisation des pochettes de clôture :</strong>
-<ul>
-<li><strong>Pochette Rouge :</strong> Espèces prélevées.</li>
-<li><strong>Pochette Documents :</strong> Chèques, Bons d’achat U, Bons
-de remise des paiements en ligne agrafés, Tickets CB.</li>
-</ul></li>
-<li><strong>Sécurisation du tiroir-caisse :</strong> Installez le capot
-métallique sur le tiroir et verrouillez-le à clé.</li>
-<li><strong>Transfert :</strong> Déposez le tiroir-caisse et les
-pochettes dans le coffre sécurisé du magasin.</li>
-</ol>
-<hr />
-<h3 id="sec-6-4bis">
-📦 6.4.bis. La Gestion des Commandes Non Retirées en Fin de Journée
-</h3>
-<p>Si une commande demeure non réclamée à l’approche de la fermeture :
-1. <strong>Contact de courtoisie :</strong> Entre 18h30 et 19h00,
-contactez le client par téléphone afin de faire le point sur son
-arrivée. 2. <strong>En cas de report au lendemain :</strong> -
-<strong>NE REMETTEZ AUCUN ARTICLE EN RAYON.</strong> - 🥖 <strong>Zone
-Sèche :</strong> Déposez le bac Sec <strong>sur l’étagère droite du
-local</strong> (zone dédiée aux reports). - 🥩🧀 <strong>Zone Frais
-:</strong> Maintenez les bacs en Chambre Froide Drive. - 🍦❄️
-<strong>Zone Surgelé :</strong> Maintenez les articles dans les
-conservateurs négatifs.</p>
-<hr />
-<h3 id="sec-6-5">
-6.5. Le Contrôle Sanitaire des Équipements Frigorifiques
-</h3>
-<div class="callout callout-warning"><div class="callout-icon">⚠️</div><div class="callout-content"><p>⚠️ <strong>CONTRÔLE DE LA CHAÎNE DU FROID :</strong><br />
-Effectuez la vérification physique des installations : - Contrôlez la
-fermeture hermétique de la porte de la <strong>Chambre Froide
-Drive</strong>. - Vérifiez l’enclenchement complet des portes des
-<strong>Congélateurs</strong>. - Assurez-vous de l’absence de produits
-hors des zones thermiques dédiées.</p></div></div>
-<hr />
-<h3 id="sec-6-6">
-6.6. La Préparation du Service du Lendemain &amp; Clôture Finale
-</h3>
-<ol type="1">
-<li><strong>Montage des chariots de collecte pour l’équipe du matin
-:</strong>
-<ul>
-<li>Assemblez les chariots en configuration 3 socles (Socle 1 avec la
-pile de bacs de réserve, Socles 2 et 3 avec 1 bac).</li>
-<li>Garnissez les bacs de sacs prêts pour la première tournée.</li>
-</ul></li>
-<li><strong>Mise en charge et fermeture informatique :</strong>
-<ul>
-<li>Fermez les applications, quittez les sessions et <strong>éteignez le
-PC via le menu principal</strong>.</li>
-<li>Déposez le Mob et les téléphones portables sur leurs
-<strong>stations de recharge</strong>.</li>
-</ul></li>
-<li><strong>Verrouillage du local :</strong>
-<ul>
-<li>Repositionnez la <strong>barrière de protection</strong> sur l’accès
-Drive.</li>
-<li>Abaissez et verrouillez le rideau métallique.</li>
-</ul></li>
-<li><strong>Badgeuse :</strong> Enregistrez votre départ à la borne.
-<strong>Fin de service.</strong></li>
-</ol>
-<hr />
-<h1 id="annexes">
-📋 ANNEXES &amp; FICHES RÉFLEXES OPÉRATIONNELLES
-</h1>
-<hr />
-<h3 id="annexe-1">
-Annexe 1 : La Grille de Contrôle Chronologique
-</h3>
-<pre class="text"><code>🌅 OUVERTURE DU MATIN (6h00 / 7h30)
-[ ] 1. Enregistrement badgeuse (respecter 1 min d&#39;intervalle)
-[ ] 2. Déverrouillage rideau métallique + retrait barrière de sécurité
-[ ] 3. Mise sous tension poste PC Drive et ouverture des sessions
-[ ] 4. Allumage Mob et double connexion (Collecte + Tiroir U Livreur)
-[ ] 5. 🚨 CLIC SUR ANTICIPATION ➔ Impression des bons métiers EN PRIORITÉ
-[ ] 6. Impression des Commandes en mode MONO (Recto-Simple)
-[ ] 7. Surlignage : Liv Shopopop / Commentaires / Zone Surgelé ➔ Tri chronologique
-[ ] 8. Montage des chariots 3 socles + Réserve de bacs supérieure
-[ ] 9. Dépôt des feuilles d&#39;anticipation aux 4 stands au départ de la 1ère commande
 
-🛒 EN TOURNÉE DE COLLECTE
-[ ] 1. Scan du QR code de commande pour ouverture de la mission sur Mob
-[ ] 2. Respect de l&#39;itinéraire : G (Boissons) ➔ E (Lait/Entretien) ➔ D (Épicerie) ➔ B (Frais/Surgelés) ➔ C (Panification)
-[ ] 3. Dénombrement physique à voix haute des quantités multiples (1, 2, 3, 4...)
-[ ] 4. Gestion des anomalies : Substitution si équivalent / Propo mise de côté si doute / Zéro repasse si retard
-[ ] 5. F&amp;L : Rassemblement groupé ➔ Pesée unique balance ➔ Bananes &amp; Pommes de terre en Zone Sèche
-[ ] 6. Clôture tournée : Scan du code sacs poignée chariot (0,26 €) ➔ Validation
-
-📦 RETOUR AU LOCAL &amp; LIVRAISON
-[ ] 1. Impression Bon de remise RECTO-VERSO ➔ Annotations stylo (Propo, Rupture, Poids)
-[ ] 2. Rangement : Surgelé en congélateur, Frais en chambre froide, Sec sur étagère
-[ ] 3. Alerte Borne : Validation prise en charge sur Mob ➔ Assemblage Sec + Frais + Surgelé + Propo
-[ ] 4. Poste Caisse : Déblocage ➔ Scan bon de remise ➔ Validation propos / Annulation substitutions ➔ Retour sacs ➔ Total ➔ Bons d&#39;achat U
-[ ] 5. Règlements en ligne : Contrôle plafond Max ➔ Euros Carte U ➔ Ticket caisse ➔ Agrafe sur bon ➔ Archivage bac droit
-[ ] 6. Bouteilles de Gaz : Porte en ouverture permanente ➔ Dépose bouteille vide au fond / Pleine au client ➔ Saisie PC ➔ Porte sécurisée
-
-🌙 CLÔTURE DU SOIR (19h20 / 19h30)
-[ ] 1. 🔴 DÉCONNEXION DE L&#39;APPLICATION U LIVREUR SUR LE MOB
-[ ] 2. Prélèvement espèces (coupures 20€ / 50€) ➔ Pochette rouge
-[ ] 3. Comptes fonds de caisse (Rouleaux fermés en Rouleaux / Rouleaux partiels en Quantité unitaire)
-[ ] 4. Sauvegarde ➔ En cas d&#39;écart : recomptage ou appel Accueil au poste 1
-[ ] 5. Verrouillage tiroir-caisse ➔ Dépôt caisse et pochettes au coffre sécurisé
-[ ] 6. Contrôle de fermeture étanche Chambre Froide et Congélateurs
-[ ] 7. Assemblage et garnissage des chariots de collecte pour le lendemain
-[ ] 8. Mise en charge du Mob et téléphones ➔ Extinction complète du PC
-[ ] 9. Repositionnement barrière de protection ➔ Verrouillage rideau métallique ➔ Badgeuse départ</code></pre>
-<hr />
-<h3 id="annexe-2">
-Annexe 2 : Le Référentiel des 6 Statuts Couleur sur PC
-</h3>
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Couleur</th>
-<th style="text-align: left;">Statut Logiciel</th>
-<th style="text-align: left;">Signification &amp; Action Requise</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">🔴 <strong>ROUGE</strong></td>
-<td style="text-align: left;"><strong>Non imprimée</strong></td>
-<td style="text-align: left;">Commande brute enregistrée. Ne pas
-imprimer avant lancement des Anticipations.</td>
-</tr>
-<tr>
-<td style="text-align: left;">🟤 <strong>MARRON</strong></td>
-<td style="text-align: left;"><strong>Attente PDA</strong></td>
-<td style="text-align: left;">Fiches imprimées classées dans le bac. En
-attente de scan par un préparateur.</td>
-</tr>
-<tr>
-<td style="text-align: left;">🟡 <strong>JAUNE</strong></td>
-<td style="text-align: left;"><strong>En cours Mono</strong></td>
-<td style="text-align: left;">Commande en cours de collecte en rayon par
-un préparateur.</td>
-</tr>
-<tr>
-<td style="text-align: left;">🔵 <strong>BLEU</strong></td>
-<td style="text-align: left;"><strong>Repasse</strong></td>
-<td style="text-align: left;">Références mises en attente. Nécessite une
-vague de collecte complémentaire.</td>
-</tr>
-<tr>
-<td style="text-align: left;">🟣 <strong>VIOLET</strong></td>
-<td style="text-align: left;"><strong>Préparé</strong></td>
-<td style="text-align: left;">Collecte achevée sur le Mob. En attente
-d’impression du Bon de remise.</td>
-</tr>
-<tr>
-<td style="text-align: left;">🟢 <strong>VERT</strong></td>
-<td style="text-align: left;"><strong>Terminé</strong></td>
-<td style="text-align: left;">Bon de remise édité, bacs stockés.
-Commande prête pour mise à disposition client.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h3 id="annexe-3">
-Annexe 3 : Annuaire des Postes Internes &amp; Contacts Clés
-</h3>
+  <div id="editable-body">
+    <h1 id="annexes">📋 ANNEXES & FICHES RÉFLEXES OPÉRATIONNELLES</h1>
+<h3 id="annexe-3">Annexe 3 : Annuaire des Postes Internes & Contacts Clés</h3>
 <table>
 <colgroup>
 <col style="width: 33%" />
@@ -1678,14 +556,14 @@ Annexe 3 : Annuaire des Postes Internes &amp; Contacts Clés
 <td style="text-align: left;">📞 <strong>Composer le 1</strong></td>
 <td style="text-align: left;"><strong>Accueil / Caisses
 centrales</strong></td>
-<td style="text-align: left;">Écart de caisse en clôture, besoin de
-renfort d’équipe, incident borne.</td>
+<td style="text-align: left;">Écart de caisse en clôture, renfort
+d’équipe, incident borne.</td>
 </tr>
 <tr>
 <td style="text-align: left;">👥 <strong>Responsable Drive</strong></td>
 <td style="text-align: left;">Coordination &amp; Pilotage</td>
 <td style="text-align: left;">Validation de procédure exceptionnelle,
-régulation des créneaux, réclamation.</td>
+litige client, planning.</td>
 </tr>
 <tr>
 <td style="text-align: left;">🥩 <strong>Laboratoire
@@ -1695,104 +573,110 @@ Boucherie</strong></td>
 spécifiques.</td>
 </tr>
 <tr>
+<td style="text-align: left;">🧀 <strong>Stand Charcuterie</strong></td>
+<td style="text-align: left;">Artisans charcutiers</td>
+<td style="text-align: left;">Anticipations coupe, aide sur bac central
+chiffonades.</td>
+</tr>
+<tr>
 <td style="text-align: left;">🐟 <strong>Poissonnerie</strong></td>
 <td style="text-align: left;">Artisans poissonniers</td>
-<td style="text-align: left;">Filets de poisson, préparations marée du
-jour (fermé le lundi).</td>
+<td style="text-align: left;">Filets de poisson, préparations marée
+(fermé le lundi).</td>
 </tr>
 <tr>
 <td style="text-align: left;">🥖 <strong>Boulangerie</strong></td>
 <td style="text-align: left;">Artisans boulangers</td>
-<td style="text-align: left;">Cuissons de baguettes, tranchage pains,
+<td style="text-align: left;">Cuisson de baguettes, tranchage pains,
 viennoiseries.</td>
 </tr>
 <tr>
 <td style="text-align: left;">📦 <strong>Équipe Réserve</strong></td>
-<td style="text-align: left;">Gestion des flux de stock</td>
+<td style="text-align: left;">Gestion des stocks</td>
 <td style="text-align: left;">Récupération de palettes en réserve haute
-(liquides, pondéreux).</td>
+(packs, liquides).</td>
 </tr>
 <tr>
 <td style="text-align: left;">💼 <strong>Secrétariat / RH</strong></td>
-<td style="text-align: left;">Administration &amp; Personnel</td>
-<td style="text-align: left;">Gestion des anomalies de badgeage,
-contrats, plannings.</td>
+<td style="text-align: left;">Administration</td>
+<td style="text-align: left;">Anomalie de badgeage, contrats,
+plannings.</td>
 </tr>
 </tbody>
 </table>
 
-    </div>
+  </div>
 
+  <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #E2E8F0;">
+    <a href="#sommaire" class="back-to-top">⬆️ Haut de page / Sommaire</a>
+  </div>
 </div>
 
-<a href="#sommaire" class="back-to-top">⬆️ Haut de page / Sommaire</a>
-
-<!-- TOAST MESSAGE -->
-<div id="toastMessage" class="toast">
-    <span>✅ Modifications enregistrées avec succès !</span>
-</div>
+<div class="toast" id="toast">✅ Modifications enregistrées avec succès !</div>
 
 <script>
-let isEditMode = false;
-const STORAGE_KEY = 'super_u_guide_content_public_v3';
+  let isEditing = false;
+  const STORAGE_KEY = 'super_u_drive_guide_custom_html_v2';
 
-// Auto-load saved content if existing
-window.addEventListener('DOMContentLoaded', () => {
+  // Load custom edits from localStorage on start
+  window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-        document.getElementById('editableContent').innerHTML = saved;
-        showToast('🔄 Vos modifications enregistrées ont été chargées !');
+      document.getElementById('editable-body').innerHTML = saved;
+      showToast('📄 Version personnalisée chargée depuis vos sauvegardes');
     }
-});
+  });
 
-// Auto-save when user types
-document.getElementById('editableContent').addEventListener('input', () => {
-    localStorage.setItem(STORAGE_KEY, document.getElementById('editableContent').innerHTML);
-});
+  function toggleEditMode() {
+    isEditing = !isEditing;
+    const body = document.getElementById('editable-body');
+    const editBtn = document.getElementById('btn-edit');
+    const saveBtn = document.getElementById('btn-save');
+    const resetBtn = document.getElementById('btn-reset');
+    const banner = document.getElementById('edit-banner');
 
-function toggleEditMode() {
-    isEditMode = !isEditMode;
-    const content = document.getElementById('editableContent');
-    const btn = document.getElementById('toggleEditBtn');
-    const banner = document.getElementById('editStatusBanner');
-
-    content.contentEditable = isEditMode;
-
-    if (isEditMode) {
-        btn.classList.add('active');
-        btn.innerHTML = '🔒 Verrouiller le texte';
-        banner.classList.add('visible');
-        showToast('✏️ Modification activée. Cliquez sur n\'importe quel texte pour changer une phrase !');
+    if (isEditing) {
+      body.setAttribute('contenteditable', 'true');
+      body.style.outline = '2px dashed #002F6C';
+      body.style.padding = '12px';
+      body.style.borderRadius = '8px';
+      editBtn.textContent = '❌ Quitter édition';
+      saveBtn.style.display = 'inline-flex';
+      resetBtn.style.display = 'inline-flex';
+      banner.style.display = 'block';
     } else {
-        btn.classList.remove('active');
-        btn.innerHTML = '✏️ Modifier le texte';
-        banner.classList.remove('visible');
-        saveEdits();
+      body.removeAttribute('contenteditable');
+      body.style.outline = 'none';
+      body.style.padding = '0';
+      editBtn.textContent = '✏️ Modifier le texte';
+      saveBtn.style.display = 'none';
+      resetBtn.style.display = 'none';
+      banner.style.display = 'none';
     }
-}
+  }
 
-function saveEdits() {
-    const content = document.getElementById('editableContent').innerHTML;
-    localStorage.setItem(STORAGE_KEY, content);
-    showToast('💾 Sauvegarde réussie ! Vos modifications sont conservées pour votre prochaine visite.');
-}
+  function saveEdits() {
+    const bodyHtml = document.getElementById('editable-body').innerHTML;
+    localStorage.setItem(STORAGE_KEY, bodyHtml);
+    showToast('💾 Modifications enregistrées dans votre navigateur !');
+    toggleEditMode();
+  }
 
-function resetToOriginal() {
-    if (confirm('Voulez-vous vraiment réinitialiser tout le document au texte officiel de base ?')) {
-        localStorage.removeItem(STORAGE_KEY);
-        location.reload();
+  function resetDefault() {
+    if (confirm('Voulez-vous réinitialiser le document à sa version d\'origine ? Toutes les modifications locales seront effacées.')) {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
     }
-}
+  }
 
-function showToast(msg) {
-    const toast = document.getElementById('toastMessage');
-    toast.innerHTML = '<span>' + msg + '</span>';
-    toast.classList.add('show');
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.style.display = 'block';
     setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3200);
-}
+      toast.style.display = 'none';
+    }, 3500);
+  }
 </script>
-
 </body>
 </html>
