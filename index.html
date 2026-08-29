@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manuel Opérationnel du Drive Super U (Modifiable)</title>
+<title>Manuel Opérationnel du Drive Super U</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -214,12 +214,12 @@ body {
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     flex-shrink: 0;
-    width: 140px;
+    width: 145px;
 }
 
 .qr-card img {
-    width: 110px;
-    height: 110px;
+    width: 115px;
+    height: 115px;
     display: block;
     margin: 0 auto;
     border-radius: 6px;
@@ -232,6 +232,13 @@ body {
     margin-top: 6px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+.qr-url {
+    font-size: 8.5px;
+    color: #64748B;
+    margin-top: 2px;
+    word-break: break-all;
 }
 
 /* TABLE OF CONTENTS */
@@ -563,19 +570,47 @@ hr {
     transform: translateY(-2px);
 }
 
+/* PRINT & PDF STYLING */
+@page {
+    size: A4 portrait;
+    margin: 14mm 12mm 14mm 12mm;
+    @bottom-right {
+        content: counter(page);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 10px;
+        color: #94a3b8;
+    }
+}
+
 @media print {
     .top-toolbar, .back-to-top, .edit-status-banner {
         display: none !important;
     }
     body {
-        padding: 0;
-        background: white;
+        padding: 0 !important;
+        background: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
     .container {
-        border: none;
-        box-shadow: none;
-        padding: 0;
-        max-width: 100%;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+    h1 {
+        page-break-before: always;
+        break-before: page;
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+    h2, h3, h4 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+    table, .callout, pre, .hero-header, .toc-container {
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 }
 </style>
@@ -600,11 +635,11 @@ hr {
 <div class="container">
 
     <div id="editStatusBanner" class="edit-status-banner">
-        <span>✏️ <strong>Mode Édition Activé :</strong> Vous pouvez cliquer directement sur n'importe quel texte ou titre pour le modifier.</span>
+        <span>✏️ <strong>Mode Édition Activé :</strong> Cliquez n'importe où sur le document pour modifier du texte ou ajouter des consignes.</span>
         <button class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;" onclick="resetToOriginal()">🔄 Réinitialiser le texte</button>
     </div>
 
-    <!-- HERO HEADER WITH EMBEDDED QR CODE -->
+    <!-- HERO HEADER WITH PUBLIC QR CODE -->
     <div class="hero-header">
         <div class="hero-left">
             <div class="hero-badge">Super U Louvigné-du-Désert • Manuel Opérationnel</div>
@@ -617,8 +652,11 @@ hr {
             </div>
         </div>
         <div class="qr-card">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoCAIAAAD1h/aCAAAIdElEQVR4nO3d0W3lyBFA0aHhgDYxR+PEnBE3An5co3urWzrn+w0lUZoLAixUP+/7/gEo/pU+DSAcwP9DOIBMOIBMOIBMOIBMOIBMOIBMOIBMOIBMOIBMOIBMOIBMOIBMOIDs3/UfPH/9588N3v/9d8l1vn7eVddfpf5evr7/Vb/fen92/13Vn3f3509Tf1+eOIBMOIBMOIBMOIBMOIBMOIBMOID9cxxfpuYaVr0nv+V9+6p5jfr5W+ZZqqnv/738/4snDiATDiATDiATDiATDiATDiATDmBujuPL1H6HqTmIqs5H1DmL3fMpu+c7du/1OG1+5zns/8sXTxxAJhxAJhxAJhxAJhxAJhxAJhzAeXMcP9Vp8xG3zLnsPsdk6vyU38YTB5AJB5AJB5AJB5AJB5AJB5AJB5CZ4/iH3ufvngvYPVdS788tez1W7e94f9l8hycOIBMOIBMOIBMOIBMOIBMOIBMO4Lw5jtvfb592Pki9zqqvu3ueZdXnp+7Pb/v/4okDyIQDyIQDyIQDyIQDyIQDyIQDmJvj2P1+e8ru8zhO+/yXW65/y/kpz+X/XzxxAJlwAJlwAJlwAJlwAJlwAJlwAPvnOG7ZFzD1Xn33PojqtHNbTvv7mZpPuZ0nDiATDiATDiATDiATDiATDiATDiB73vdt/2DRvoPdds8v7N4HscpP3SsxdU7Nab/fqd+7Jw4gEw4gEw4gEw4gEw4gEw4gEw5g7lyVW/Yj1Pfqt+zLmNqjcfv5Jqs8Q/MdU/fHEweQCQeQCQeQCQeQCQeQCQeQCQdw3hxHfY992vv/VXMfU9ep1z9tfmH3z7v7/JTnku+/8sQBZMIBZMIBZMIBZMIBZMIBZMIBzJ2rctq+gFvmO37qOS9TP+8qp83dfLGPA7iGcACZcACZcACZcACZcACZcAD793FM7VmYmlNYtZfh9nmBavd9Pm3e5MvUvIl9HMBxhAPIhAPIhAPIhAPIhAPIhAPYv49jlam9EqedT1Gd9nOdti/j9nmQ55J9N544gEw4gEw4gEw4gEw4gEw4gEw4gN93rsotex92O+3cluqWc16+PEP3wRwHcA3hADLhADLhADLhADLhADLhAObOVamm3s+f9nVP2/dx+zzFLb+Xd/N93v1zeeIAMuEAMuEAMuEAMuEAMuEAMuEA9s9x7N7XUK9z2r6M+v2cNt9x2v3c7bQ9I+8l+2I8cQCZcACZcACZcACZcACZcACZcAD75ziq2/ca7Hb7/ojTrJobWvV39Vwy91R/v544gEw4gEw4gEw4gEw4gEw4gEw4gLlzVXbvF7jlvI/T5kp2z33svv7uv7dV3sP2yOy+D544gEw4gEw4gEw4gEw4gEw4gEw4gOx533fNhQ57r/5l1b6D0/Yv3GLV/Zma77h9zmgVTxxAJhxAJhxAJhxAJhxAJhxAJhzA/n0cu/cI7H5vP/U+fNV9O+2cjnqdql7ntP0d7+b5jqk5F08cQCYcQCYcQCYcQCYcQCYcQCYcwP45ji9TcwS7P1/dMgex6ryPW87ZOW2eYpWpc3w8cQCZcACZcACZcACZcACZcACZcAD7z1U5bS6jmjpfY+o6X067/qqvu8ot92eKJw4gEw4gEw4gEw4gEw4gEw4gEw5gbh/HlKm5iXr9L7efF1Ptvv9TczrvYX8/9frOVQG2Ew4gEw4gEw4gEw4gEw4gEw5g/z6O/AWG9m5Uu88HqXafJ7LK1O9rlan5l+fy/SmeOIBMOIBMOIBMOIBMOIBMOIBMOIC5fRy75zV2v8eudp/zUn/e0/ZBTJ07M/V3+Bw2R7P763riADLhADLhADLhADLhADLhADLhAM47V+W0c0xWmZpfqN/PKlNzJV9W3efTzuV5D5sT+eKJA8iEA8iEA8iEA8iEA8iEA8iEA9g/x7FqbmLVnMLt8xHV1PzLaXsrbp8DOm2PjHNVgO2EA8iEA8iEA8iEA8iEA8iEA8ie933XXOiSczRW+W17RqbmO6rd561Mff60uSRPHEAmHEAmHEAmHEAmHEAmHEAmHMD+OY7d741vf7+96n3+KrvvW/26U/dn6v5P2T0/4okDyIQDyIQDyIQDyIQDyIQDyIQD2H+uypdb9g7sPhfmlnmE27//VXM3p+1teRZ9fve+GE8cQCYcQCYcQCYcQCYcQCYcQCYcwNw+jlveh68yNe+wytT3OXUeze1zQ6fNxXjiADLhADLhADLhADLhADLhADLhAOb2cdxyDsvUe/5b5iBO2/tQr797/uXLM3Q+y9QeE08cQCYcQCYcQCYcQCYcQCYcQCYcwP59HLfbvWdhah7ky0+dT7nl+7xlHsQ+DmA74QAy4QAy4QAy4QAy4QAy4QD27+OYes9c1X0Nq/ZNnLYvY/f1f+r5L6s8Q/dt9/U9cQCZcACZcACZcACZcACZcACZcABz56qc9p68fn73fMTU/o7TzrWpTrs/1Xv5vMYXTxxAJhxAJhxAJhxAJhxAJhxAJhzA3BzH7fsUTpvv+HLa/oup81PqvpVq1d6W2+c1vnjiADLhADLhADLhADLhADLhADLhAM6b47jFqnmNqf0Rp523Uq+z6vOnnWvzLvq6U+ezfPHEAWTCAWTCAWTCAWTCAWTCAWTCAWTmOIbnI6qpOYhq6uueNpfxDP1cu3niADLhADLhADLhADLhADLhADLhAM6b4zjtPIjdexlOmy/YPY+w+zyUqXNnpu7/s/m8nlX3xxMHkAkHkAkHkAkHkAkHkAkHkAkHMDfHccvegam5gHr90/ZTrLrOLee8nHZOynPY360nDiATDiATDiATDiATDiATDiATDiB73vft/wr41TxxAJlwAJlwAJlwAJlwAJlwAJlwAJlwAJlwAJlwAJlwAJlwAJlwAJlwAJlwAH+qvwHELahVPtLWZAAAAABJRU5ErkJggg==" alt="QR Code d'accès au Guide Drive Super U">
-            <div class="qr-caption">📱 Scanner Mob / Mobile</div>
+            <a href="https://ewiwlll.github.io/super-u-drive/" target="_blank">
+                <img src="data:image/png;base64,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" alt="QR Code d'accès au Guide Drive Super U">
+            </a>
+            <div class="qr-caption">📱 Scanner Mobile</div>
+            <div class="qr-url">ewiwlll.github.io/super-u-drive</div>
         </div>
     </div>
 
@@ -1768,14 +1806,13 @@ contrats, plannings.</td>
 
 <script>
 let isEditMode = false;
-const STORAGE_KEY = 'super_u_guide_content_v1';
+const STORAGE_KEY = 'super_u_guide_content_public_v1';
 
-// Check if user has saved edits in LocalStorage
 window.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
         document.getElementById('editableContent').innerHTML = saved;
-        showToast('🔄 Vos modifications précédentes ont été restaurées !');
+        showToast('🔄 Vos modifications personnalisées ont été chargées !');
     }
 });
 
@@ -1791,7 +1828,7 @@ function toggleEditMode() {
         btn.classList.add('active');
         btn.innerHTML = '🔒 Quitter Mode Édition';
         banner.classList.add('visible');
-        showToast('✏️ Mode édition activé. Cliquez n\'importe où pour modifier !');
+        showToast('✏️ Mode édition activé. Cliquez sur n\'importe quel texte pour modifier !');
     } else {
         btn.classList.remove('active');
         btn.innerHTML = '✏️ Mode Modifiable';
